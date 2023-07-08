@@ -1,0 +1,64 @@
+.aboutme {
+    background-color: rgba(32, 32, 32, 1);
+    padding: 110px 70px 102px 70px;
+}
+
+.aboutme__author {
+    display: flex;
+    padding-top: 66px;
+    justify-content: space-between;
+}
+
+.aboutme__author-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.aboutme__author-name {
+    margin: 0;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: -2px;
+}
+
+.aboutme__author-about {
+    margin: 0;
+    padding-top: 18px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.111;
+}
+
+.aboutme__author-description {
+    margin: 0;
+    padding-top: 26px;
+    color: #FFF;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.571;
+}
+
+.aboutme__github-link {
+    padding-top: 33px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.aboutme__avatar {
+    max-width: 270px;
+    max-height: 327px;
+    border-radius: 10px;
+    object-fit: cover;
+    color: rgba(255, 255, 255, 1);
+}

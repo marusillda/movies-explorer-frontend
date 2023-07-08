@@ -1,29 +1,76 @@
 .aboutproject {
-    background-color: rgba(39, 39, 39, 1);
-    padding: 100px 70px 100px 70px;
+    background-color: rgba(32, 32, 32, 1);
+    padding: 110px 70px 104px 70px;
 }
 
-.aboutproject-heading {
+.aboutproject__table {
+    display: flex;
+    justify-content: space-between;
     margin: 0 auto;
-    padding-top: 90px;
+    padding: 0;
+    list-style: none;
+    padding-top: 70px;
+}
+
+.aboutproject__table-cell {
+    max-width: 550px;
+}
+
+.aboutproject__table-heading {
+    margin: 0;
     color: rgba(255, 255, 255, 1);
-    text-align: center;
     font-family: 'Inter', Arial, sans-serif;
-    font-size: 50px;
+    font-size: 20px;
     font-weight: 400;
-    line-height: 1.16;
-    letter-spacing: -2px;
+    line-height: normal;
+    letter-spacing: -0.8px;
 }
 
-.aboutproject-description {
-    margin: 0 auto;
-    padding-top: 26px;
-    max-width: 460px;
+.aboutproject__table-text {
+    margin: 0;
     color: rgba(255, 255, 255, 1);
-    text-align: center;
-    font-family: Inter;
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
-    line-height: 20px;
-    letter-spacing: -0.56px;
+    line-height: 1.429;
+    padding-top: 26px;
+}
+
+.aboutproject__timing {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 36px 36px;
+    padding-top: 110px;
+    padding-left: 1px;
+}
+
+.aboutproject__timing-line {
+    text-align: center;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    padding: 10px 0 10px 0px;
+}
+
+.aboutproject__timing-line_period_backend {
+    background-color: rgba(61, 220, 132, 1);
+    color: rgba(0, 0, 0, 1);
+}
+
+.aboutproject__timing-line_period_frontend {
+    background-color: rgba(48, 48, 48, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutproject__timing-name {
+    margin: 0;
+    color: rgba(139, 139, 139, 1);
+    text-align: center;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    padding-top: 14px;
 }

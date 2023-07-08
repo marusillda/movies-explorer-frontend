@@ -31,7 +31,7 @@ export default function Header() {
                 <nav className="header__navbar">
                     <Link to="/sign-up" className="header__navbar-link">Регистрация</Link>
                     <Link to="/sign-in">
-                        <button type='button' className="header__navbar-button">
+                        <button type='button' className="header__navbar-button" aria-label="Кнопка Войти">
                             Войти
                         </button>
                     </Link>
