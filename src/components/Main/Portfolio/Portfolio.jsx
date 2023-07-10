@@ -10,19 +10,19 @@ export default function Portfolio() {
                 <ul className="portfolio__projects">
                     <li className="portfolio__project">
                         <p className="portfolio__project-name">Статичный сайт</p>
-                        <a class="portfolio__project-link" target="_blank" rel="noopener noreferrer" href="https://marusillda.github.io/how-to-learn/">
+                        <a className="portfolio__project-link" target="_blank" rel="noopener noreferrer" href="https://marusillda.github.io/how-to-learn/">
                             <img className="portfolio__project-link-image" src={portfolioLink} alt="Стрелка для перехода на сайт" />
                         </a>
                     </li>
                     <li className="portfolio__project">
                         <p className="portfolio__project-name">Адаптивный сайт</p>
-                        <a class="portfolio__link" target="_blank" rel="noopener noreferrer" href="https://marusillda.github.io/russian-travel/">
+                        <a className="portfolio__link" target="_blank" rel="noopener noreferrer" href="https://marusillda.github.io/russian-travel/">
                             <img className="portfolio__project-link-image" src={portfolioLink} alt="Стрелка для перехода на сайт" />
                         </a>
                     </li>
                     <li className="portfolio__project">
                         <p className="portfolio__project-name">Одностраничное приложение</p>
-                        <a class="portfolio__link" target="_blank" rel="noopener noreferrer" href="https://mesto.marusillda.nomoreparties.sbs/">
+                        <a className="portfolio__link" target="_blank" rel="noopener noreferrer" href="https://mesto.marusillda.nomoreparties.sbs/">
                             <img className="portfolio__project-link-image" src={portfolioLink} alt="Стрелка для перехода на сайт" />
                         </a>
                     </li>

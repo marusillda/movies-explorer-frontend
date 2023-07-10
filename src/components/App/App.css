@@ -8,3 +8,16 @@
   -moz-text-size-adjust: 100%;
   max-width: 1280px;
 }
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: rgba(255, 255, 255, 1);
+  transition: all 5000s ease-in-out;
+}
+
+.selectable-blue {
+  transition: opacity .3s ease-in-out;
+}
+
+.selectable-blue:hover {
+  opacity: .7;
+}

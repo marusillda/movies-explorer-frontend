@@ -1,13 +1,14 @@
 import './Header.css';
-import headerLogo from '../../images/header-logo.svg';
+import Logo from '../Logo/Logo';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
     const { pathname } = useLocation();
-    const showRegistration = pathname === '/sign-in';
-    const showLogin = pathname === '/sign-up';
+    const isLoginPage = pathname === '/signin';
+    const isRegistrationPage = pathname === '/signup';
+    const showHeader = !isLoginPage && !isRegistrationPage;
 
-    return (
+    return showHeader && (
         <header className="header">
             {/* <div>
           {showNavbar && (
@@ -27,10 +28,10 @@ export default function Header() {
                 </div>
             </div>*/}
             <div className="header__line">
-                <img className="header__logo" src={headerLogo} alt="Логотип сайта" />
+                <Logo position="header__logo-position" />
                 <nav className="header__navbar">
-                    <Link to="/sign-up" className="header__navbar-link">Регистрация</Link>
-                    <Link to="/sign-in">
+                    <Link to="/signup" className="header__navbar-link">Регистрация</Link>
+                    <Link to="/signin">
                         <button type='button' className="header__navbar-button" aria-label="Кнопка Войти">
                             Войти
                         </button>
