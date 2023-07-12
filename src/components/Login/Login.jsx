@@ -14,12 +14,12 @@ export default function Login({ loginUser }) {
     return (
         <section className="login" aria-label="Вход на сайт">
             <Logo position="login__logo-position" />
-            <h2 className="login__title">Рады видеть!</h2>
+            <h1 className="login__title">Рады видеть!</h1>
             <form className="login__form" onSubmit={handleSubmit}>
-                <div className='login__field-container'>
-                    <label className='login__label' htmlFor='email'>E-mail</label>
+                <div className="login__field-container">
+                    <label className="login__label" htmlFor="email">E-mail</label>
                     <input
-                        className={`login__field ${errors.email ? 'login__field-error' : ''}`}
+                        className={`login__field ${errors.email ? "login__field-error" : ""}`}
                         type="email"
                         id="email"
                         name="email"
@@ -27,22 +27,24 @@ export default function Login({ loginUser }) {
                         onChange={handleChange}
                         autoComplete="username"
                         required
+                        placeholder="Введите E-mail"
                     />
                     <span className="login__field-error-message">
                         {errors.email}
                     </span>
                 </div>
-                <div className='login__field-container'>
-                    <label className='login__label' htmlFor='password'>Пароль</label>
+                <div className="login__field-container">
+                    <label className="login__label" htmlFor="password">Пароль</label>
                     <input
-                        className={`login__field ${errors.password ? 'login__field-error' : ''}`}
+                        className={`login__field ${errors.password ? "login__field-error" : ""}`}
                         type="password"
                         id="password"
                         name="password"
-                        minLength={3}
+                        minLength="6"
                         value={values.password || ''}
                         onChange={handleChange}
                         autoComplete="current-password"
+                        placeholder="Введите пароль"
                         required
                     />
                     <span className="login__field-error-message">
@@ -52,15 +54,15 @@ export default function Login({ loginUser }) {
                 <button
                     disabled={!isValid}
                     type="submit"
-                    className="login__submit-button selectable-blue"
-                    aria-label="Кнопка Зарегистрироваться"
+                    className="login__submit-button selectable-transparent"
+                    aria-label="Кнопка Войти"
                 >
                     Войти
                 </button>
             </form>
             <div className="login__signin">
                 <p className="login__signin-link">Ещё не зарегистрированы? </p>
-                <Link to="/signup" className="login__signin-link login__signin-link_color_blue selectable-blue">Регистрация</Link>
+                <Link to="/signup" className="login__signin-link login__signin-link_color_blue selectable-transparent">Регистрация</Link>
             </div>
         </section>
     )

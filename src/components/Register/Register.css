@@ -87,7 +87,7 @@
     font-size: 14px;
     font-weight: 500;
     line-height: normal;
-    padding: 14px 125px;
+    padding: 14px;
     cursor: pointer;
 }
 
@@ -119,4 +119,10 @@
 
 .register__signin-link+.register__signin-link {
     padding-left: 7px;
+}
+
+.register__field::placeholder {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: normal;
 }

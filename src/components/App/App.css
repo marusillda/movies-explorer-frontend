@@ -14,10 +14,10 @@ input:-webkit-autofill {
   transition: all 5000s ease-in-out;
 }
 
-.selectable-blue {
+.selectable-transparent {
   transition: opacity .3s ease-in-out;
 }
 
-.selectable-blue:hover {
+.selectable-transparent:hover {
   opacity: .7;
 }

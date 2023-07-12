@@ -14,52 +14,56 @@ export default function Register({ registerUser }) {
     return (
         <section className="register" aria-label="Регистрация">
             <Logo position="register__logo-position" />
-            <h2 className="register__title">Добро пожаловать!</h2>
+            <h1 className="register__title">Добро пожаловать!</h1>
             <form className="register__form" onSubmit={handleSubmit}>
-                <div className='register__field-container'>
-                    <label className='register__label' htmlFor='name'>Имя</label>
+                <div className="register__field-container">
+                    <label className="register__label" htmlFor="name">Имя</label>
                     <input
-                        className={`register__field ${errors.name ? 'register__field-error' : ''}`}
+                        className={`register__field ${errors.name ? "register__field-error" : ""}`}
                         type="name"
                         id="name"
                         name="name"
                         value={values.name || ''}
                         onChange={handleChange}
                         autoComplete="name"
-                        minLength={2}
+                        minLength="2"
+                        maxLength="30"
+                        placeholder="Введите имя"
                         required
                     />
                     <span className="register__field-error-message">
                         {errors.name}
                     </span>
                 </div>
-                <div className='register__field-container'>
-                    <label className='register__label' htmlFor='email'>E-mail</label>
+                <div className="register__field-container">
+                    <label className="register__label" htmlFor="email">E-mail</label>
                     <input
-                        className={`register__field ${errors.email ? 'register__field-error' : ''}`}
+                        className={`register__field ${errors.email ? "register__field-error" : ""}`}
                         type="email"
                         id="email"
                         name="email"
                         value={values.email || ''}
                         onChange={handleChange}
                         autoComplete="username"
+                        placeholder="Введите E-mail"
                         required
                     />
                     <span className="register__field-error-message">
                         {errors.email}
                     </span>
                 </div>
-                <div className='register__field-container'>
-                    <label className='register__label' htmlFor='password'>Пароль</label>
+                <div className="register__field-container">
+                    <label className="register__label" htmlFor="password">Пароль</label>
                     <input
-                        className={`register__field ${errors.password ? 'register__field-error' : ''}`}
+                        className={`register__field ${errors.password ? "register__field-error" : ""}`}
                         type="password"
                         id="password"
                         name="password"
-                        minLength={3}
+                        minLength="6"
                         value={values.password || ''}
                         onChange={handleChange}
                         autoComplete="current-password"
+                        placeholder="Введите пароль"
                         required
                     />
                     <span className="register__field-error-message">
@@ -69,7 +73,7 @@ export default function Register({ registerUser }) {
                 <button
                     disabled={!isValid}
                     type="submit"
-                    className="register__submit-button selectable-blue"
+                    className="register__submit-button selectable-transparent"
                     aria-label="Кнопка Зарегистрироваться"
                 >
                     Зарегистрироваться
@@ -77,7 +81,7 @@ export default function Register({ registerUser }) {
             </form>
             <div className="register__signin">
                 <p className="register__signin-link">Уже зарегистрированы? </p>
-                <Link to="/signin" className="register__signin-link register__signin-link_color_blue selectable-blue">Войти</Link>
+                <Link to="/signin" className="register__signin-link register__signin-link_color_blue selectable-transparent">Войти</Link>
             </div>
         </section>
     )

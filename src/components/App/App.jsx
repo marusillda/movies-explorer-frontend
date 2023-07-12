@@ -4,7 +4,10 @@ import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import Profile from '../Profile/Profile';
+import Movies from '../Movies/Movies';
 import './App.css';
+import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
 
 function App() {
   return (
@@ -19,6 +22,15 @@ function App() {
         <Route path="/signin" element={
           <Login
           />} />
+        <Route path="/profile" element={
+          <Profile
+          />} />
+        <Route path="/movies" element={
+          <>
+            <Movies />
+            <MoviesCardList />
+          </>
+        } />
       </Routes>
       <Footer />
     </div>

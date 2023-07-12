@@ -5,7 +5,8 @@ export default function Footer() {
     const { pathname } = useLocation();
     const isLoginPage = pathname === '/signin';
     const isRegistrationPage = pathname === '/signup';
-    const showFooter = !isLoginPage && !isRegistrationPage;
+    const isProfilePage = pathname === '/profile';
+    const showFooter = !isLoginPage && !isRegistrationPage && !isProfilePage;
 
     return showFooter && (
         <footer className="footer">

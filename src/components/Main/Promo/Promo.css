@@ -16,7 +16,6 @@
 .nbr {
     white-space: nowrap;
     display: inline-block;
-    translate: 0px 1px;
 }
 
 .promo__title {
@@ -47,6 +46,7 @@
 
 .promo__button {
     border-style: none;
+    padding: 0;
     color: rgba(255, 255, 255, 1);
     font-family: 'Inter', Arial, sans-serif;
     font-size: 12px;
