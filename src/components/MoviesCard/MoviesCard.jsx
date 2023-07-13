@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import './MoviesCard.css';
 
-export default function MoviesCard({ movie, onMovieClick, onMovieLike }) {
-    const isLiked = true;
+export default function MoviesCard({ movie, onMovieClick }) {
+    const [isLiked, setIsLiked] = useState(false);
+
+    const onMovieLike = () => {
+        isLiked ? setIsLiked(false) : setIsLiked(true);
+    }
+
     const moviesLikeButtonClassName = (
         `moviescard__like-button ${isLiked && 'moviescard__like-button-fill'}`
     );
@@ -19,7 +25,7 @@ export default function MoviesCard({ movie, onMovieClick, onMovieLike }) {
                     type="button"
                     className={moviesLikeButtonClassName}
                     aria-label="Кнопка Поставить лайк"
-                    onClick={() => { onMovieLike(movie._id) }}
+                    onClick={() => { onMovieLike() }}
                 >
                 </button>
             </div>
