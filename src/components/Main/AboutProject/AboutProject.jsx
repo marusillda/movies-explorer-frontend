@@ -4,7 +4,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 export default function AboutProject() {
 
     return (
-        <section className="aboutproject" aria-label="О проекте">
+        <section id='aboutProject' className="aboutproject" aria-label="О проекте">
             <SectionTitle title="О проекте" />
             <ul className="aboutproject__table">
                 <li className="aboutproject__table-cell">
