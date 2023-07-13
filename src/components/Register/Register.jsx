@@ -73,7 +73,7 @@ export default function Register({ registerUser }) {
                 <button
                     disabled={!isValid}
                     type="submit"
-                    className="register__submit-button selectable-transparent"
+                    className="register__submit-button selectable-button"
                     aria-label="Кнопка Зарегистрироваться"
                 >
                     Зарегистрироваться
@@ -81,7 +81,7 @@ export default function Register({ registerUser }) {
             </form>
             <div className="register__signin">
                 <p className="register__signin-link">Уже зарегистрированы? </p>
-                <Link to="/signin" className="register__signin-link register__signin-link_color_blue selectable-transparent">Войти</Link>
+                <Link to="/signin" className="register__signin-link register__signin-link_color_blue selectable-link">Войти</Link>
             </div>
         </main>
     )

@@ -7,7 +7,7 @@ export default function Movies() {
         <main className="movies">
             <SearchForm />
             <MoviesCardList />
-            <button className="movies__more" type="button">Ещё</button>
+            <button className="movies__more selectable-button" type="button">Ещё</button>
         </main>
     )
 }

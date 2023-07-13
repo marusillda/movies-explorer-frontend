@@ -15,7 +15,7 @@ export default function SearchForm() {
                     />
                     <button
                         type="submit"
-                        className="searchform__submit-button selectable-transparent"
+                        className="searchform__submit-button selectable-button"
                         aria-label="Кнопка поиска фильма"
                     >
                         Поиск

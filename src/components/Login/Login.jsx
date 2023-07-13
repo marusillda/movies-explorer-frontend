@@ -54,7 +54,7 @@ export default function Login({ loginUser }) {
                 <button
                     disabled={!isValid}
                     type="submit"
-                    className="login__submit-button selectable-transparent"
+                    className="login__submit-button selectable-button"
                     aria-label="Кнопка Войти"
                 >
                     Войти
@@ -62,7 +62,7 @@ export default function Login({ loginUser }) {
             </form>
             <div className="login__signin">
                 <p className="login__signin-link">Ещё не зарегистрированы? </p>
-                <Link to="/signup" className="login__signin-link login__signin-link_color_blue selectable-transparent">Регистрация</Link>
+                <Link to="/signup" className="login__signin-link login__signin-link_color_blue selectable-link">Регистрация</Link>
             </div>
         </main>
     )

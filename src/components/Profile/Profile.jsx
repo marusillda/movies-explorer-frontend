@@ -72,7 +72,7 @@ export default function Profile({ changeUser }) {
                             <button
                                 disabled={!isValid || !isProfileChanged}
                                 type="submit"
-                                className="profile__submit-button selectable-transparent"
+                                className="profile__submit-button selectable-button"
                                 aria-label="Кнопка Сохранить"
                             >
                                 Сохранить
@@ -83,7 +83,7 @@ export default function Profile({ changeUser }) {
                             <>
                                 <button
                                     type="button"
-                                    className="profile__button selectable-transparent"
+                                    className="profile__button selectable-link"
                                     aria-label="Кнопка редактирования"
                                     onClick={() => setIsEditMode(true)}
                                 >
@@ -91,7 +91,7 @@ export default function Profile({ changeUser }) {
                                 </button>
                                 <button
                                     type="button"
-                                    className="profile__button profile__button_type_exit selectable-transparent"
+                                    className="profile__button profile__button_type_exit selectable-link"
                                     aria-label="Кнопка выхода из аккаунта"
                                 >
                                     Выйти из аккаунта
