@@ -1,12 +1,12 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-
-
-export default function MoviesCardList() {
+export default function MoviesCardList({ movies }) {
     return (
         <section className="moviescardlist">
-            <MoviesCard />
+            {
+                movies.map(movie => (<MoviesCard movie={movie} />))
+            }
         </section>
     )
 }
