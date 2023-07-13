@@ -7,7 +7,7 @@ import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import Movies from '../Movies/Movies';
 import './App.css';
-import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 function App() {
   return (
@@ -26,11 +26,12 @@ function App() {
           <Profile
           />} />
         <Route path="/movies" element={
-          <>
-            <Movies />
-            <MoviesCardList />
-          </>
+          <Movies />
         } />
+        <Route path="/saved-movies" element={
+          <SavedMovies />
+        } />
+
       </Routes>
       <Footer />
     </div>

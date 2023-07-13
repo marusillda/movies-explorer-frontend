@@ -1,5 +1,5 @@
 import './SearchForm.css';
-import ToggleButton from '../../ToggleButton/ToggleButton';
+import ToggleButton from '../ToggleButton/ToggleButton';
 
 export default function SearchForm() {
     return (

@@ -1,7 +1,7 @@
 import './MoviesCard.css';
 import { useContext } from 'react';
-import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
-import photo from '../../../images/pic__COLOR_pic.png'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import photo from '../../images/pic__COLOR_pic.png'
 
 export default function MoviesCard({ movie, onMovieClick, onMovieLike }) {
     const currentUser = useContext(CurrentUserContext);

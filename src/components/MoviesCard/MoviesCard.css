@@ -62,7 +62,7 @@
     border: none;
     padding: 0;
     background-color: transparent;
-    background: center / contain no-repeat url(../../../images/movies-like-button.svg);
+    background: center / contain no-repeat url(../../images/movies-like-button.svg);
     cursor: pointer;
     transition: opacity .3s ease-in-out;
 }
@@ -72,5 +72,5 @@
 }
 
 .moviescard__like-button-fill {
-    background: center / contain no-repeat url(../../../images/movies-like-button-fill.svg);
+    background: center / contain no-repeat url(../../images/movies-like-button-fill.svg);
 }

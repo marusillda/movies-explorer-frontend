@@ -12,7 +12,7 @@ export default function Register({ registerUser }) {
     };
 
     return (
-        <section className="register" aria-label="Регистрация">
+        <main className="register">
             <Logo position="register__logo-position" />
             <h1 className="register__title">Добро пожаловать!</h1>
             <form className="register__form" onSubmit={handleSubmit}>
@@ -83,6 +83,6 @@ export default function Register({ registerUser }) {
                 <p className="register__signin-link">Уже зарегистрированы? </p>
                 <Link to="/signin" className="register__signin-link register__signin-link_color_blue selectable-transparent">Войти</Link>
             </div>
-        </section>
+        </main>
     )
 }

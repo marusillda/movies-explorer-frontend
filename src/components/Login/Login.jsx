@@ -12,7 +12,7 @@ export default function Login({ loginUser }) {
     };
 
     return (
-        <section className="login" aria-label="Вход на сайт">
+        <main className="login">
             <Logo position="login__logo-position" />
             <h1 className="login__title">Рады видеть!</h1>
             <form className="login__form" onSubmit={handleSubmit}>
@@ -64,6 +64,6 @@ export default function Login({ loginUser }) {
                 <p className="login__signin-link">Ещё не зарегистрированы? </p>
                 <Link to="/signup" className="login__signin-link login__signin-link_color_blue selectable-transparent">Регистрация</Link>
             </div>
-        </section>
+        </main>
     )
 }
