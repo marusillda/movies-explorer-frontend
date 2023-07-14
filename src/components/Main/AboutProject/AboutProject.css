@@ -28,6 +28,7 @@
 
 .aboutproject__table-text {
     margin: 0;
+    max-width: 550px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Inter', Arial, sans-serif;
     font-size: 14px;
@@ -73,4 +74,42 @@
     font-weight: 500;
     line-height: 17px;
     padding-top: 14px;
+}
+
+@media screen and (max-width: 1100px) {
+    .aboutproject__table-cell+.aboutproject__table-cell {
+        padding-left: 30px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .aboutproject {
+        padding: 89px 50px 85px 50px;
+    }
+
+    .aboutproject__table-cell {
+        max-width: 319px;
+    }
+
+    .aboutproject__table-cell+.aboutproject__table-cell {
+        padding-left: 30px;
+    }
+
+    .aboutproject__table-text {
+        font-size: 12px;
+        line-height: 1.5;
+        padding-top: 21px;
+    }
+
+    .aboutproject__timing {
+        padding-top: 94px;
+        grid-template-columns: 21% 79%;
+        grid-template-rows: 36px 36px;
+    }
+
+    .aboutproject__timing-name {
+        font-family: 'Suisse Intl', 'Inter', Arial, sans-serif;
+        font-weight: 400;
+
+    }
 }

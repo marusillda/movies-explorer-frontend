@@ -4,8 +4,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { movies } from '../../utils/constants';
 
 export default function Movies() {
-
-
     return (
         <main className="movies">
             <SearchForm />

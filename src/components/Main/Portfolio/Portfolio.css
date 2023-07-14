@@ -1,11 +1,12 @@
 .portfolio {
     background-color: rgba(32, 32, 32, 1);
-    padding-top: 101px 70px 125px 70px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 70px 0 70px;
 }
 
 .portfolio__title {
     margin: 0;
-    padding-left: 70px;
     max-width: 250px;
     color: rgba(139, 139, 139, 1);
     font-family: 'Inter', Arial, sans-serif;
@@ -17,7 +18,7 @@
 .portfolio__table {
     display: flex;
     flex-direction: column;
-    padding: 30px 70px 125px 70px;
+    padding: 30px 0 125px 0;
 }
 
 .portfolio__projects {
@@ -60,4 +61,30 @@
     min-height: 60px;
     object-fit: contain;
     translate: -6px 4px;
+}
+
+
+@media screen and (max-width: 770px) {
+    .portfolio {
+        padding: 0 50px 0 50px;
+    }
+
+    .portfolio__table {
+        padding-bottom: 89px;
+    }
+
+    .portfolio__project-name {
+        font-size: 28px;
+        line-height: 1.785;
+        letter-spacing: -1.12px;
+    }
+
+    .portfolio__project-link-image {
+        width: 17px;
+        translate: -5px 3px;
+    }
+
+    .portfolio__project+.portfolio__project {
+        border-top: 1px solid rgba(230, 230, 230, 1);
+    }
 }

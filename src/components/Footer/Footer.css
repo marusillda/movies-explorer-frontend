@@ -51,3 +51,9 @@
 .footer__link+.footer__link {
     margin-left: 21px;
 }
+
+@media screen and (max-width: 770px) {
+    .footer {
+        padding: 60px 30px 20px 30px;
+    }
+}

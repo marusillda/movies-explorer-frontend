@@ -55,3 +55,33 @@
 .techs__technology+.techs__technology {
     margin-left: 10px;
 }
+
+
+@media screen and (max-width: 770px) {
+    .techs {
+        padding: 89px 50px 90px 50px;
+    }
+
+    .techs__heading {
+        padding-top: 80px;
+        padding-right: 2px;
+    }
+
+    .techs__description {
+        padding-top: 22px;
+        font-size: 12px;
+        line-height: 1.5;
+        letter-spacing: -0.48px;
+    }
+
+    .techs__technologies {
+        padding: 83px 0 0 0;
+    }
+
+    .techs__technology {
+        width: 84px;
+        height: 57px;
+        font-size: 12px;
+        letter-spacing: -0.48;
+    }
+}

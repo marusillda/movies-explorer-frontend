@@ -12,6 +12,7 @@
 .aboutme__author-info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     max-width: 600px;
 }
 
@@ -37,6 +38,7 @@
 
 .aboutme__author-description {
     margin: 0;
+    max-width: 600px;
     padding-top: 26px;
     color: #FFF;
     font-family: 'Inter', Arial, sans-serif;
@@ -56,9 +58,51 @@
 }
 
 .aboutme__avatar {
-    max-width: 270px;
-    max-height: 327px;
+    width: 270px;
+    height: 327px;
     border-radius: 10px;
     object-fit: cover;
     color: rgba(255, 255, 255, 1);
+}
+
+
+@media screen and (max-width: 1050px) {
+    .aboutme__author-description {
+        padding-right: 49px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .aboutme__avatar {
+        width: 255px;
+        height: 307px;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .aboutme {
+        padding: 90px 50px 91px 50px;
+    }
+
+    .aboutme__author-name {
+        font-size: 40px;
+        line-height: 1;
+        letter-spacing: -1.6px;
+    }
+
+    .aboutme__author-about {
+        padding-top: 15px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .aboutme__author-description {
+        padding-top: 20px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .aboutme__github-link {
+        padding-top: 17px;
+    }
 }
