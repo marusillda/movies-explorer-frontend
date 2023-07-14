@@ -23,3 +23,9 @@
     align-self: center;
     cursor: pointer;
 }
+
+@media screen and (max-width: 870px) {
+    .movies__more {
+        margin: 81px 0 99px 0;
+    }
+}

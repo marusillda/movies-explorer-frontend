@@ -14,13 +14,12 @@ export default function MoviesCard({ movie, onMovieClick }) {
 
     return (
         <article className="moviescard">
-            <img className="moviescard__photo" src={movie.photo} alt="Название фильма" />
+            <a href="https://www.youtube.com/watch?v=iudeJyaOxss" className='selectable-link' target="_blank" rel="noreferrer">
+                <img className="moviescard__photo" src={movie.photo} alt="Название фильма" />
+            </a>
             {/* <img className="moviescard__photo" src={movie.link} alt={movie.name} onClick={() => onMovieClick(movie)} /> */}
-            <div className="moviescard__capture">
-                <div className="moviescard__info">
-                    <h2 className="moviescard__info-name">{movie.name}</h2>
-                    <p className="moviescard__info-duration">{movie.duration}</p>
-                </div>
+            <div className="moviescard__info">
+                <h2 className="moviescard__info-name">{movie.name}</h2>
                 <button
                     type="button"
                     className={moviesLikeButtonClassName}
@@ -29,6 +28,7 @@ export default function MoviesCard({ movie, onMovieClick }) {
                 >
                 </button>
             </div>
+            <p className="moviescard__info-duration">{movie.duration}</p>
         </article>
     )
 }
