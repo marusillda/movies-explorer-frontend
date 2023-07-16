@@ -81,18 +81,6 @@ const savedMovies = [
         duration: '1ч 47м'
     },
     {
-        _id: '5',
-        name: 'Бег это свобода',
-        photo: 'https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/5/49/755269892475495.png',
-        duration: '1ч 44м'
-    },
-    {
-        _id: '6',
-        name: 'Книготорговцы',
-        photo: 'https://cultureru.com/wp-content/uploads/2020/07/beat-film-fest-kicks-off-aug-1.jpg',
-        duration: '1ч 37м'
-    },
-    {
         _id: '8',
         name: 'Gimme Danger: История Игги и The Stooge...',
         photo: 'https://kg-rostov.ru/upload/iblock/13f/13f8f5538a6f7977ab15e7aada94f100.jpg',

@@ -23,7 +23,7 @@ export default function Profile({ changeUser }) {
 
     return (
         <section className="profile" aria-label="Редактирование профиля пользователя">
-            <h1 className="profile__title">Привет, {currentUser?.name}!</h1>
+            <h1 className="profile__title">Привет, Виталий{currentUser?.name}!</h1>
             <form className="profile__form" onSubmit={handleSubmit}>
                 <div className="profile__form-container">
                     <div className="profile__field-container">

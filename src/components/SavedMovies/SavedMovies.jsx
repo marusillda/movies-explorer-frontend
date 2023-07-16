@@ -5,7 +5,7 @@ import { savedMovies } from '../../utils/constants';
 
 export default function SavedMovies() {
     return (
-        <main>
+        <main className="savedmovies">
             <SearchForm />
             <MoviesCardList movies={savedMovies} />
         </main>

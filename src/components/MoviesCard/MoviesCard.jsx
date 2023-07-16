@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 
 export default function MoviesCard({ movie, onMovieClick }) {
     const [isLiked, setIsLiked] = useState(false);
+    const location = useLocation();
 
     const onMovieLike = () => {
         isLiked ? setIsLiked(false) : setIsLiked(true);
@@ -17,16 +19,21 @@ export default function MoviesCard({ movie, onMovieClick }) {
             <a href="https://www.youtube.com/watch?v=iudeJyaOxss" className='selectable-link' target="_blank" rel="noreferrer">
                 <img className="moviescard__photo" src={movie.photo} alt="Название фильма" />
             </a>
-            {/* <img className="moviescard__photo" src={movie.link} alt={movie.name} onClick={() => onMovieClick(movie)} /> */}
             <div className="moviescard__info">
                 <h2 className="moviescard__info-name">{movie.name}</h2>
-                <button
+                {(location.pathname === '/movies') && <button
                     type="button"
                     className={moviesLikeButtonClassName}
                     aria-label="Кнопка Поставить лайк"
                     onClick={() => { onMovieLike() }}
                 >
-                </button>
+                </button>}
+                {(location.pathname === '/saved-movies') &&
+                    <div
+                        className="moviescard-overlay"
+                        onClick={() => { onMovieLike() }}
+                    >
+                    </div>}
             </div>
             <p className="moviescard__info-duration">{movie.duration}</p>
         </article>

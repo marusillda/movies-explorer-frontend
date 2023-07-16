@@ -9,19 +9,23 @@
 }
 
 .moviescard__photo {
+    display: block;
     width: 364px;
     height: 203px;
     object-fit: cover;
-    background-color: #000;
+    background-color: rgba(34, 34, 34, 1);
     cursor: pointer;
-    color: rgba(34, 34, 34, 1);
+    color: rgba(255, 255, 255, 1);
+    ;
 }
 
 .moviescard__info {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 6px 16px 0 15px;
+    margin: 10px 16px 0 15px;
+    min-height: 30px;
 }
 
 .moviescard__info-name {
@@ -64,6 +68,25 @@
     background: center / contain no-repeat url(../../images/movies-like-button-fill.svg);
 }
 
+.moviescard-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 0;
+    transition: opacity .8s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.moviescard-overlay:hover {
+    background-image: url("../../images/movies-close-button.svg");
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    background-position: 301px -2px;
+    opacity: 1;
+}
+
 @media screen and (max-width: 870px) {
     .moviescard {
         max-width: 339px;
@@ -75,7 +98,7 @@
     }
 
     .moviescard__info {
-        margin: 3px 14px 0 14px;
+        margin: 7px 14px 0 14px;
     }
 
     .moviescard__info-duration {
@@ -84,5 +107,9 @@
 
     .moviescard__info-name {
         max-width: 260px;
+    }
+
+    .moviescard-overlay:hover {
+        background-position: 280px -1px;
     }
 }
