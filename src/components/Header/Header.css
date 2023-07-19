@@ -31,6 +31,10 @@
     cursor: pointer;
 }
 
+.header__navbar-link_type_active {
+    border-bottom: 2px solid rgba(255, 255, 255, 1);
+}
+
 .header__navbar-link_type_register {
     text-align: right;
     font-size: 12px;
@@ -73,20 +77,25 @@
 @media screen and (min-width: 769px) {
     .header__navbar-link_type_movies {
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 400;
         line-height: 1.286;
-        padding-right: 21px;
+        margin-right: 21px;
     }
 
     .header__navbar-link_type_savedmovies {
         font-size: 14px;
         font-weight: 400;
         line-height: 1.286;
-        padding-right: 19px;
+        margin-right: 19px;
     }
 
     .header__navbar-link_type_main {
         display: none;
+    }
+
+    .header__navbar-link_type_active {
+        font-weight: 500;
+        border-bottom: unset;
     }
 }
 
@@ -111,6 +120,10 @@
     .header__navbar-profile-button {
         margin-left: 0px;
         margin-top: 621px;
+    }
+
+    .header__navbar-link_type_active {
+        font-weight: 500;
     }
 }
 

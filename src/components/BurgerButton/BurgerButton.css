@@ -31,8 +31,12 @@
 }
 
 /* ловит клики */
-.burger__button-overlay {
+.burger__button-overlay.clicked {
     position: fixed;
+}
+
+.burger__button-overlay {
+    position: absolute;
     z-index: 1000;
     top: 23px;
     right: 37px;
