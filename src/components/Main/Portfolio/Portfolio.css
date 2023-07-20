@@ -88,3 +88,33 @@
         border-top: 1px solid rgba(230, 230, 230, 1);
     }
 }
+
+@media screen and (max-width: 570px) {
+    .portfolio__title {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.429;
+    }
+
+    .portfolio__project-name {
+        font-size: 18px;
+        line-height: 1.556;
+        letter-spacing: -0.72px;
+    }
+
+    .portfolio__table {
+        padding: 20px 0 70px 0;
+    }
+
+    .portfolio__project-link-image {
+        width: 12px;
+        translate: -5px -1px;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .portfolio {
+        padding: 0 14px 0 14px;
+    }
+}

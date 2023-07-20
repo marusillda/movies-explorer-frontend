@@ -42,7 +42,7 @@
     grid-template-columns: 20% 80%;
     grid-template-rows: 36px 36px;
     padding-top: 110px;
-    padding-left: 1px;
+    padding-left: 0px;
 }
 
 .aboutproject__timing-line {
@@ -112,4 +112,50 @@
         font-weight: 400;
 
     }
+}
+
+@media screen and (max-width: 440px) {
+    .aboutproject {
+        padding: 70px 18px 85px 18px;
+    }
+
+    .aboutproject__table {
+        display: flex;
+        flex-direction: column;
+        padding-top: 60px;
+    }
+
+    .aboutproject__table-cell+.aboutproject__table-cell {
+        padding-left: unset;
+        padding-top: 56px;
+    }
+
+    .aboutproject__table-heading {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .aboutproject__table-text {
+        font-size: 11px;
+        line-height: 1.455;
+        padding-top: 16px;
+    }
+
+    .aboutproject__timing {
+        padding-top: 60px;
+        grid-template-columns: 35.2% 64.8%;
+        grid-template-rows: 36px 36px;
+    }
+
+    .aboutproject__timing-line {
+        font-size: 11px;
+        padding-top: 11px;
+    }
+
+    .aboutproject__timing-name {
+        font-size: 11px;
+        line-height: normal;
+        padding-top: 10px;
+    }
+
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Logo({ position }) {
     return (
         <Link to="/">
-            <img className={`logo ${position}`} src={logo} alt="Логотип сайта" />
+            <img className={`logo selectable-button ${position}`} src={logo} alt="Логотип сайта" />
         </Link>
 
     )

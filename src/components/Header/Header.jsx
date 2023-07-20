@@ -22,26 +22,27 @@ export default function Header() {
         <header className="header">
             <div className={headerLineClass}>
                 <Logo position="header__logo-position" />
-                <BurgerButton isMenuClicked={isMenuClicked} onClick={handleNavbarClick} />
                 {
-                    !currentUser
+                    currentUser
                         ?
-                        <BurgerMenu isMenuClicked={isMenuClicked}>
-                            <nav className="header__navbar header__navbar_buregermenu">
-                                <NavLink to="/"
-                                    className={({ isActive }) => `header__navbar-link header__navbar-link_type_main selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Главная</NavLink>
-                                <NavLink to="/movies"
-                                    className={({ isActive }) => `header__navbar-link header__navbar-link_type_movies selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Фильмы</NavLink>
-                                <NavLink to="/saved-movies"
-                                    className={({ isActive }) => `header__navbar-link header__navbar-link_type_savedmovies selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Сохранённые фильмы</NavLink>
-                                <NavLink to="/profile">
-                                    <button type='button' className="header__navbar-profile-button selectable-button" aria-label="Кнопка для редатирования данных пользователя">
-                                        Аккаунт
-                                    </button>
-                                </NavLink>
-                            </nav>
-                        </BurgerMenu>
-
+                        <>
+                            <BurgerButton isMenuClicked={isMenuClicked} onClick={handleNavbarClick} />
+                            <BurgerMenu isMenuClicked={isMenuClicked}>
+                                <nav className="header__navbar header__navbar_buregermenu">
+                                    <NavLink to="/"
+                                        className={({ isActive }) => `header__navbar-link header__navbar-link_type_main selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Главная</NavLink>
+                                    <NavLink to="/movies"
+                                        className={({ isActive }) => `header__navbar-link header__navbar-link_type_movies selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Фильмы</NavLink>
+                                    <NavLink to="/saved-movies"
+                                        className={({ isActive }) => `header__navbar-link header__navbar-link_type_savedmovies selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Сохранённые фильмы</NavLink>
+                                    <NavLink to="/profile">
+                                        <button type='button' className="header__navbar-profile-button selectable-button" aria-label="Кнопка для редатирования данных пользователя">
+                                            Аккаунт
+                                        </button>
+                                    </NavLink>
+                                </nav>
+                            </BurgerMenu>
+                        </>
                         :
                         (<nav className="header__navbar">
                             <NavLink to="/signup" className="header__navbar-link header__navbar-link_type_register selectable-link">Регистрация</NavLink>

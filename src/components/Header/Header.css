@@ -3,6 +3,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     background-color: rgba(32, 32, 32, 1);
 }
 
@@ -127,12 +128,25 @@
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 400px) {
     .header__logo-position {
         margin-left: 14px;
     }
 
+    .header__navbar-link_type_register {
+        font-size: 10px;
+        line-height: 1.6;
+    }
+
+    .header__navbar-button {
+        width: 54px;
+        height: 26px;
+        font-size: 10px;
+        line-height: 1.6;
+        margin-left: 14px;
+    }
+
     .header__navbar {
-        margin-right: 14px;
+        margin: 24px 14px 24px 14px;
     }
 }

@@ -9,3 +9,11 @@
     padding-bottom: 24px;
     border-bottom: 1px solid rgba(218, 218, 218, 1);
 }
+
+@media screen and (max-width: 440px) {
+    .section__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 29px;
+    }
+}

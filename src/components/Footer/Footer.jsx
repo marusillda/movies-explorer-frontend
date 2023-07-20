@@ -3,9 +3,9 @@ import './Footer.css';
 export default function Footer() {
     return (
         <footer className="footer">
-            <h2 className="footer__heading">
+            <h1 className="footer__heading">
                 Учебный проект Яндекс.Практикум х BeatFilm.
-            </h2>
+            </h1>
             <div className="footer__line">
                 <p className="footer__copyright">© {new Date().getFullYear()}</p>
                 <nav className="footer__links">

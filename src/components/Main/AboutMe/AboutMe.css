@@ -12,7 +12,6 @@
 .aboutme__author-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     max-width: 600px;
 }
 
@@ -48,7 +47,7 @@
 }
 
 .aboutme__github-link {
-    padding-top: 33px;
+    padding-top: 78px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Inter', Arial, sans-serif;
     font-size: 14px;
@@ -103,6 +102,56 @@
     }
 
     .aboutme__github-link {
-        padding-top: 17px;
+        padding-top: 70px;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .aboutme__author {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-top: 60px;
+        align-items: center;
+    }
+
+    .aboutme__author {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-top: 60px;
+        justify-content: space-between;
+    }
+
+    .aboutme__avatar {
+        width: 292px;
+        height: 352px;
+    }
+
+    .aboutme__author-name {
+        font-size: 30px;
+        line-height: normal;
+        letter-spacing: -1.2px;
+        padding-top: 40px;
+    }
+
+    .aboutme__author-about {
+        padding-top: 20px;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+
+    .aboutme__author-description {
+        padding: 20px 0 0 0;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .aboutme {
+        padding: 38px 14px 71px 14px;
+    }
+
+    .aboutme__github-link {
+        padding-top: 24px;
     }
 }
