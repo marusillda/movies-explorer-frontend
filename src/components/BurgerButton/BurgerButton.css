@@ -75,4 +75,12 @@
     .burger__button-overlay {
         right: 21px;
     }
+
+    .burger__button-bar.clicked:nth-child(1) {
+        transform: rotate(45deg) translate(4px, -2px);
+    }
+
+    .burger__button-bar.clicked:nth-child(3) {
+        transform: rotate(135deg) translate(-15px, 9px);
+    }
 }

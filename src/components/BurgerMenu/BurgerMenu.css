@@ -31,3 +31,9 @@
         z-index: 100;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .burger__menu {
+        width: 100%;
+    }
+}
