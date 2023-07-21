@@ -54,3 +54,12 @@
 .togglebutton {
     display: flex;
 }
+
+
+@media screen and (max-width: 400px) {
+    .togglebutton__text {
+        font-size: 11px;
+        line-height: 1.636;
+        padding-left: 13px;
+    }
+}

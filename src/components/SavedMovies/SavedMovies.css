@@ -7,3 +7,9 @@
         margin-bottom: 189px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .savedmovies {
+        margin-bottom: 187px;
+    }
+}

@@ -65,3 +65,14 @@
         margin-right: 2px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .burger__button-container {
+        height: 21px;
+        width: 23px;
+    }
+
+    .burger__button-overlay {
+        right: 21px;
+    }
+}

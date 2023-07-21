@@ -17,7 +17,7 @@
 
 .searchform__field-movie {
     width: calc(100% - 25px);
-    height: 72px;
+    min-height: 72px;
     padding: 0;
     background-color: rgba(32, 32, 32, 1);
     border-radius: 8px;
@@ -66,5 +66,36 @@
     .searchform {
         margin: 70px 30px 43px 30px;
         min-height: 169px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .searchform {
+        margin: 70px 14px 43px 14px;
+    }
+
+    .searchform__field-movie {
+        min-height: 56px;
+        padding-left: 11px;
+        width: calc(100% - 12px);
+    }
+
+    .searchform__submit-button {
+        top: 6px;
+        right: 7px;
+        min-width: 80px;
+        max-height: 44px;
+        line-height: 1.286;
+        padding: 14px;
+        border-radius: 5px;
+    }
+
+    .searchform__field-movie::placeholder {
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    .searchform__container {
+        padding-bottom: 14px;
     }
 }

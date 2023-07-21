@@ -64,7 +64,6 @@
     color: rgba(255, 255, 255, 1);
 }
 
-
 @media screen and (max-width: 1050px) {
     .aboutme__author-description {
         padding-right: 49px;

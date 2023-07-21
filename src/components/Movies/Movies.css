@@ -29,3 +29,10 @@
         margin: 81px 0 99px 0;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .movies__more {
+        min-width: 240px;
+        margin: 79px 0 99px 0;
+    }
+}

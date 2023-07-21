@@ -86,13 +86,6 @@ const savedMovies = [
         photo: 'https://kg-rostov.ru/upload/iblock/13f/13f8f5538a6f7977ab15e7aada94f100.jpg',
         duration: '1ч 59м'
     },
-
-    {
-        _id: '11',
-        name: 'Пи Джей Харви: A dog called money',
-        photo: 'https://avatars.mds.yandex.net/get-images-cbir/2927318/LC43Lny0RSenRilNvDTIxQ3473/ocr',
-        duration: '1ч 4м'
-    },
 ];
 
 export {

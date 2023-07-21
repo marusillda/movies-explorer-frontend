@@ -16,7 +16,6 @@
     background-color: rgba(34, 34, 34, 1);
     cursor: pointer;
     color: rgba(255, 255, 255, 1);
-    ;
 }
 
 .moviescard__info {
@@ -111,5 +110,36 @@
 
     .moviescard-overlay:hover {
         background-position: 280px -1px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .moviescardlist {
+        width: calc(100% - 2 * 10px);
+        padding-top: 7px;
+        row-gap: 14px;
+        justify-items: center;
+    }
+
+    .moviescard {
+        max-width: 300px;
+    }
+
+    .moviescard__photo {
+        width: 300px;
+        height: 168px;
+    }
+
+    .moviescard__info-name {
+        font-size: 12px;
+    }
+
+    .moviescard__info-duration {
+        font-size: 10px;
+        margin: 8px 0 11px 14px;
+    }
+
+    .moviescard__info {
+        margin: 7px 11px 0 14px;
     }
 }
