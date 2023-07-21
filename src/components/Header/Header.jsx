@@ -32,9 +32,9 @@ export default function Header() {
                                     <NavLink to="/"
                                         className={({ isActive }) => `header__navbar-link header__navbar-link_type_main selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Главная</NavLink>
                                     <NavLink to="/movies"
-                                        className={({ isActive }) => `header__navbar-link header__navbar-link_type_movies selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Фильмы</NavLink>
+                                        className={({ isActive }) => `header__navbar-link selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Фильмы</NavLink>
                                     <NavLink to="/saved-movies"
-                                        className={({ isActive }) => `header__navbar-link header__navbar-link_type_savedmovies selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Сохранённые фильмы</NavLink>
+                                        className={({ isActive }) => `header__navbar-link selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Сохранённые фильмы</NavLink>
                                     <NavLink to="/profile">
                                         <button type='button' className="header__navbar-profile-button selectable-button" aria-label="Кнопка для редатирования данных пользователя">
                                             Аккаунт
@@ -45,7 +45,7 @@ export default function Header() {
                         </>
                         :
                         (<nav className="header__navbar">
-                            <NavLink to="/signup" className="header__navbar-link header__navbar-link_type_register selectable-link">Регистрация</NavLink>
+                            <NavLink to="/signup" className="header__navbar-register selectable-link">Регистрация</NavLink>
                             <NavLink to="/signin">
                                 <button type='button' className="header__navbar-button selectable-button" aria-label="Кнопка Войти">
                                     Войти

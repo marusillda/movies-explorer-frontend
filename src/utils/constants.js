@@ -38,7 +38,7 @@ const movies = [
     {
         _id: '7',
         name: 'Когда я думаю о Германии ночью',
-        photo: 'https://avatars.mds.yandex.net/get-images-cbir/4598668/GT5wquPMqSmr-2m7DKuF5Q3911/ocr',
+        photo: 'https://avatars.mds.yandex.net/get-images-cbir/3726527/GT5wquPMqSmr-2m7DKuF5Q2669/ocr',
         duration: '1ч 56м'
     },
     {
@@ -56,19 +56,19 @@ const movies = [
     {
         _id: '10',
         name: 'Соберись перед прыжком',
-        photo: 'https://avatars.mds.yandex.net/get-images-cbir/2751167/GjnLZ8Z0AYBQ4Bz5xs2yeQ3377/ocr',
+        photo: 'https://avatars.mds.yandex.net/get-images-cbir/4855606/GjnLZ8Z0AYBQ4Bz5xs2yeQ2784/ocr',
         duration: '1ч 10м'
     },
     {
         _id: '11',
         name: 'Пи Джей Харви: A dog called money',
-        photo: 'https://avatars.mds.yandex.net/get-images-cbir/2927318/LC43Lny0RSenRilNvDTIxQ3473/ocr',
+        photo: 'https://avatars.mds.yandex.net/get-images-cbir/1780006/LC43Lny0RSenRilNvDTIxQ2805/ocr',
         duration: '1ч 4м'
     },
     {
         _id: '12',
         name: 'По волнам: Искусство звука в кино',
-        photo: 'https://avatars.mds.yandex.net/get-images-cbir/405709/iV3GCYuPY6_pZ9vEllj3mA3540/ocr',
+        photo: 'https://beatfilmfestival.ru/media/pages/movies/if-i-think-of-germany-at-night/3840904410-1606911705/whenithink-1-1200x630.jpg',
         duration: '1ч 7м'
     },
 ];

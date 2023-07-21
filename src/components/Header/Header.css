@@ -15,6 +15,17 @@
     margin: 18px 0 18px 70px;
 }
 
+.header__navbar-register {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter', Arial, sans-serif;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .header__navbar {
     display: flex;
     align-items: center;
@@ -25,11 +36,14 @@
     color: rgba(255, 255, 255, 1);
     font-family: 'Inter', Arial, sans-serif;
     font-size: 18px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
     cursor: pointer;
+}
+
+.header__navbar-link+.header__navbar-link {
+    margin-right: 20px;
 }
 
 .header__navbar-link_type_active {
@@ -37,13 +51,6 @@
     text-decoration: underline;
     text-decoration-thickness: 2px;
     color: rgba(255, 255, 255, 1);
-}
-
-.header__navbar-link_type_register {
-    text-align: right;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.333;
 }
 
 .header__navbar-button {
@@ -79,18 +86,10 @@
 }
 
 @media screen and (min-width: 769px) {
-    .header__navbar-link_type_movies {
+    .header__navbar-link {
         font-size: 14px;
         font-weight: 400;
         line-height: 1.286;
-        margin-right: 21px;
-    }
-
-    .header__navbar-link_type_savedmovies {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.286;
-        margin-right: 19px;
     }
 
     .header__navbar-link_type_main {
@@ -119,6 +118,7 @@
 
     .header__navbar-link+.header__navbar-link {
         padding-top: 28px;
+        margin-right: 0;
     }
 
     .header__navbar-profile-button {
@@ -136,7 +136,7 @@
         margin-left: 14px;
     }
 
-    .header__navbar-link_type_register {
+    .header__navbar-register {
         font-size: 10px;
         line-height: 1.6;
     }
@@ -150,11 +150,12 @@
     }
 
     .header__navbar {
-        margin: 144px 14px 42px 14px;
+        margin: 24px 14px 21px 14px;
     }
 
     .header__navbar-link+.header__navbar-link {
         padding-top: 25px;
+        margin-right: 0;
     }
 
     .header__navbar-link_type_active {
@@ -163,5 +164,9 @@
 
     .header__navbar-profile-button {
         margin-top: 444px;
+    }
+
+    .header__navbar_buregermenu {
+        margin: 144px auto 43px auto;
     }
 }

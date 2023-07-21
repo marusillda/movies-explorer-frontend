@@ -77,10 +77,10 @@
     }
 
     .burger__button-bar.clicked:nth-child(1) {
-        transform: rotate(45deg) translate(4px, -2px);
+        transform: rotate(45deg) translate(3px, -3px);
     }
 
     .burger__button-bar.clicked:nth-child(3) {
-        transform: rotate(135deg) translate(-15px, 9px);
+        transform: rotate(135deg) translate(-16px, 10px);
     }
 }
