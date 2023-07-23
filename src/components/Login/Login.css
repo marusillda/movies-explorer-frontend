@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     max-width: 396px;
+    width: 100%;
 }
 
 .login__title {
@@ -48,6 +49,8 @@
     font-weight: 500;
     line-height: 1.21;
     border: 0;
+    outline: none;
+    transition: 0.4s;
     width: 100%;
     border-bottom: 1px solid rgba(66, 66, 66, 1);
     background-color: transparent;
@@ -56,8 +59,7 @@
 }
 
 .login__field:focus {
-    outline: 0;
-    box-shadow: -9px 10px 0px -9px rgba(66, 133, 244, 1), 9px 10px 0px -9px rgba(66, 133, 244, 1);
+    border-bottom: 1px solid rgba(66, 133, 244, 1);
 }
 
 .login__field-error {

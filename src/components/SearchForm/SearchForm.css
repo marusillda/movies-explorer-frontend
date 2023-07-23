@@ -14,11 +14,12 @@
     border-radius: 8px;
     box-sizing: border-box;
     border: 1.5px solid rgba(170, 170, 170, 0.2);
+    transition: 0.4s;
     align-items: center;
 }
 
-.searchform__container:hover {
-    box-shadow: 0px 0px 5px 1px rgba(66, 133, 244, 1);
+.searchform__container:has(.searchform__field-movie:focus) {
+    outline: 1px solid rgba(66, 133, 244, 1);
 }
 
 .searchform__field-movie {
@@ -32,13 +33,10 @@
     font-weight: 400;
     line-height: 20px;
     border: none;
+    outline: none;
     border-radius: 8px;
     padding-left: 25px;
     padding-right: 25px;
-}
-
-.searchform__field-movie:focus {
-    outline: 0;
 }
 
 .searchform__submit-button {

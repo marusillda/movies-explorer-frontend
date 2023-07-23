@@ -40,7 +40,7 @@ export default function Profile({ changeUser }) {
                             maxLength="30"
                             required
                             placeholder="Введите имя"
-                            readOnly={!isEditMode}
+                            disabled={!isEditMode}
                         />
                     </div>
                     <span className="profile__field-error-message">
@@ -59,7 +59,7 @@ export default function Profile({ changeUser }) {
                             onChange={handleChange}
                             required
                             placeholder="Введите email"
-                            readOnly={!isEditMode}
+                            disabled={!isEditMode}
                         />
                     </div>
                     <span className="profile__field-error-message">
