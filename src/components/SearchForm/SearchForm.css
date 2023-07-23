@@ -17,6 +17,10 @@
     align-items: center;
 }
 
+.searchform__container:hover {
+    box-shadow: 0px 0px 5px 1px rgba(66, 133, 244, 1);
+}
+
 .searchform__field-movie {
     width: calc(100% - 25px);
     padding: 0;
@@ -34,7 +38,7 @@
 }
 
 .searchform__field-movie:focus {
-    outline: 1.5px solid rgba(66, 133, 244, 1);
+    outline: 0;
 }
 
 .searchform__submit-button {
