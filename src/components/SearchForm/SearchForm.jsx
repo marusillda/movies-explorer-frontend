@@ -11,6 +11,7 @@ export default function SearchForm() {
                     id="movie"
                     name="movie"
                     placeholder="Фильм"
+                    required
                 />
                 <button
                     type="submit"

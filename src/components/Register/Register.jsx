@@ -60,6 +60,7 @@ export default function Register({ registerUser }) {
                         id="password"
                         name="password"
                         minLength="6"
+                        maxLength="22"
                         value={values.password || ''}
                         onChange={handleChange}
                         autoComplete="current-password"

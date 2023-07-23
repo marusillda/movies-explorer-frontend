@@ -41,6 +41,7 @@ export default function Login({ loginUser }) {
                         id="password"
                         name="password"
                         minLength="6"
+                        maxLength="22"
                         value={values.password || ''}
                         onChange={handleChange}
                         autoComplete="current-password"
