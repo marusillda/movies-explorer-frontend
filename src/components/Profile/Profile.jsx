@@ -1,5 +1,6 @@
 import './Profile.css';
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -89,13 +90,15 @@ export default function Profile({ changeUser }) {
                                 >
                                     Редактировать
                                 </button>
-                                <button
-                                    type="button"
-                                    className="profile__button profile__button_type_exit selectable-link"
-                                    aria-label="Кнопка выхода из аккаунта"
-                                >
-                                    Выйти из аккаунта
-                                </button>
+                                <Link to="/">
+                                    <button
+                                        type="button"
+                                        className="profile__button profile__button_type_exit selectable-link"
+                                        aria-label="Кнопка выхода из аккаунта"
+                                    >
+                                        Выйти из аккаунта
+                                    </button>
+                                </Link>
                             </>
                         )
                     }
