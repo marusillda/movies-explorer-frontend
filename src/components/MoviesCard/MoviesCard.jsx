@@ -15,7 +15,7 @@ export default function MoviesCard({ movie, onMovieClick }) {
     );
 
     return (
-        <article className="moviescard">
+        <li className="moviescard">
             <a href="https://www.youtube.com/watch?v=iudeJyaOxss" className='selectable-link' target="_blank" rel="noreferrer">
                 <img className="moviescard__photo" src={movie.photo} alt={`Фильм ${movie.name}`} />
             </a>
@@ -36,6 +36,6 @@ export default function MoviesCard({ movie, onMovieClick }) {
                     </div>}
             </div>
             <p className="moviescard__info-duration">{movie.duration}</p>
-        </article>
+        </li>
     )
 }

@@ -7,13 +7,13 @@ export default function MoviesCardList({ movies }) {
 
     const moviesCount = isMobile ? 5 : isTablet ? 8 : 12;
     return (
-        <section className="moviescardlist">
+        <ul className="moviescardlist">
             {movies.slice(0, moviesCount).map(movie => (
                 <MoviesCard
                     key={movie._id}
                     movie={movie} />
             ))
             }
-        </section>
+        </ul>
     )
 }

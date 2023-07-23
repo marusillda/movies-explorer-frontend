@@ -5,10 +5,10 @@ import { movies } from '../../utils/constants';
 
 export default function Movies() {
     return (
-        <main className="movies">
+        <section className="movies" aria-label="Фильмы">
             <SearchForm />
             <MoviesCardList movies={movies} />
             <button className="movies__more selectable-button" type="button">Ещё</button>
-        </main>
+        </section>
     )
 }

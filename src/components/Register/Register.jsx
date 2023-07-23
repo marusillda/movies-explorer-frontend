@@ -12,7 +12,7 @@ export default function Register({ registerUser }) {
     };
 
     return (
-        <main className="register">
+        <section className="register" aria-label="Регистрация на сайте">
             <Logo position="register__logo-position" />
             <h1 className="register__title">Добро пожаловать!</h1>
             <form className="register__form" onSubmit={handleSubmit}>
@@ -20,7 +20,7 @@ export default function Register({ registerUser }) {
                     <label className="register__label" htmlFor="name">Имя</label>
                     <input
                         className={`register__field ${errors.name ? "register__field-error" : ""}`}
-                        type="name"
+                        type="text"
                         id="name"
                         name="name"
                         value={values.name || ''}
@@ -84,6 +84,6 @@ export default function Register({ registerUser }) {
                 <p className="register__signin-link">Уже зарегистрированы? </p>
                 <Link to="/signin" className="register__signin-link register__signin-link_color_blue selectable-link">Войти</Link>
             </div>
-        </main>
+        </section>
     )
 }

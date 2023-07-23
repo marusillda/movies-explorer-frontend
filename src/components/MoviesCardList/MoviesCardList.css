@@ -1,5 +1,6 @@
 .moviescardlist {
     padding-top: 38px;
+    padding-left: 0;
     width: calc(100% - 2 * 70px);
     margin: 0 auto;
     display: grid;
@@ -7,6 +8,7 @@
     justify-content: center;
     column-gap: 24px;
     row-gap: 37px;
+    list-style: none;
 }
 
 @media screen and (max-width: 870px) {

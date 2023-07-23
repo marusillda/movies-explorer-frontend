@@ -5,9 +5,9 @@ import { savedMovies } from '../../utils/constants';
 
 export default function SavedMovies() {
     return (
-        <main className="savedmovies">
+        <section className="savedmovies" aria-label="Сохраненные фильмы">
             <SearchForm />
             <MoviesCardList movies={savedMovies} />
-        </main>
+        </section>
     )
 }

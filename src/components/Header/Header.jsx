@@ -35,10 +35,8 @@ export default function Header() {
                                         className={({ isActive }) => `header__navbar-link selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Фильмы</NavLink>
                                     <NavLink to="/saved-movies"
                                         className={({ isActive }) => `header__navbar-link selectable-link ${isActive ? 'header__navbar-link_type_active' : ''}`}>Сохранённые фильмы</NavLink>
-                                    <NavLink to="/profile">
-                                        <button type='button' className="header__navbar-profile-button selectable-button" aria-label="Кнопка для редатирования данных пользователя">
-                                            Аккаунт
-                                        </button>
+                                    <NavLink className="header__navbar-profile-button selectable-button" to="/profile">
+                                        Аккаунт
                                     </NavLink>
                                 </nav>
                             </BurgerMenu>

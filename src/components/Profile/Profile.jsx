@@ -90,14 +90,8 @@ export default function Profile({ changeUser }) {
                                 >
                                     Редактировать
                                 </button>
-                                <Link to="/">
-                                    <button
-                                        type="button"
-                                        className="profile__button profile__button_type_exit selectable-link"
-                                        aria-label="Кнопка выхода из аккаунта"
-                                    >
-                                        Выйти из аккаунта
-                                    </button>
+                                <Link className="profile__button profile__button_type_exit selectable-link" to="/">
+                                    Выйти из аккаунта
                                 </Link>
                             </>
                         )

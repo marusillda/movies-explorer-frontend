@@ -15,21 +15,17 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<LayOut showFooter={(location.pathname !== '/profile')} />}>
+        <Route path="/" element={<LayOut showFooter={(location.pathname !== '/profile')} showHeader={true} />}>
           <Route path="" element={<Main />} />
           <Route path="profile" element={<Profile />} />
           <Route path="movies" element={<Movies />} />
           <Route path="saved-movies" element={<SavedMovies />} />
         </Route>
-        <Route path="/signup" element={
-          <Register
-          />} />
-        <Route path="/signin" element={
-          <Login
-          />} />
-        <Route path="*" element={
-          <NotFound />
-        } />
+        <Route path="/" element={<LayOut showFooter={false} showHeader={false} />}>
+          <Route path="signup" element={<Register />} />
+          <Route path="signin" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </div>
   );

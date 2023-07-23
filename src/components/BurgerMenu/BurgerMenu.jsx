@@ -6,11 +6,11 @@ export default function BurgerMenu({ children, isMenuClicked }) {
     const menuOverlay = `burger__menu-overlay ${isMenuClicked ? '' : 'burger__menu-overlay-hidden'}`
 
     return (
-        <>
+        <aside>
             <div className={menuOverlay}></div>
             <div className={menuClass}>
                 {children}
             </div>
-        </>
+        </aside>
     )
 }

@@ -3,8 +3,8 @@ import ToggleButton from '../ToggleButton/ToggleButton';
 
 export default function SearchForm() {
     return (
-        <section className="searchform" aria-label="Форма поиска">
-            <form className="searchform__container">
+        <form className="searchform">
+            <div className="searchform__container">
                 <input
                     className="searchform__field-movie"
                     type="text"
@@ -12,6 +12,7 @@ export default function SearchForm() {
                     name="movie"
                     placeholder="Фильм"
                     required
+                    autoComplete='off'
                 />
                 <button
                     type="submit"
@@ -20,8 +21,8 @@ export default function SearchForm() {
                 >
                     Поиск
                 </button>
-            </form>
+            </div>
             <ToggleButton text="Короткометражки" />
-        </section>
+        </form>
     )
 }
