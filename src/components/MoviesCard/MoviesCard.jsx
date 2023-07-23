@@ -17,7 +17,7 @@ export default function MoviesCard({ movie, onMovieClick }) {
     return (
         <article className="moviescard">
             <a href="https://www.youtube.com/watch?v=iudeJyaOxss" className='selectable-link' target="_blank" rel="noreferrer">
-                <img className="moviescard__photo" src={movie.photo} alt="Название фильма" />
+                <img className="moviescard__photo" src={movie.photo} alt={`Фильм ${movie.name}`} />
             </a>
             <div className="moviescard__info">
                 <h2 className="moviescard__info-name">{movie.name}</h2>
