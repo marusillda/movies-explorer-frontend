@@ -1,5 +1,5 @@
 @media screen and (max-width: 768px) {
-    .burger__menu-overlay {
+    .burger-overlay {
         width: 100%;
         height: 100%;
         position: fixed;
@@ -7,21 +7,21 @@
         background: rgba(0, 0, 0, 0.3);
     }
 
-    .burger__menu-overlay-hidden {
+    .burger-overlay_hidden {
         display: none;
     }
 
-    .burger__menu_visible {
+    .burger-menu_visible {
         transform: translateX(0);
         transition: ease-out 0.3s;
     }
 
-    .burger__menu_hidden {
+    .burger-menu_hidden {
         transform: translateX(100%);
         transition: ease-out 0.3s;
     }
 
-    .burger__menu {
+    .burger-menu {
         width: 67.7%;
         height: 100%;
         background-color: rgba(32, 32, 32, 1);
@@ -33,7 +33,7 @@
 }
 
 @media screen and (max-width: 321px) {
-    .burger__menu {
+    .burger-menu {
         width: 100%;
     }
 }

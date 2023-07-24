@@ -31,18 +31,18 @@
 }
 
 /* ловит клики */
-.burger__button-overlay.clicked {
+.burger.clicked {
     position: fixed;
 }
 
-.burger__button-overlay {
+.burger {
     position: absolute;
     z-index: 1000;
     top: 23px;
     right: 37px;
 }
 
-.burger__button-overlay.active:hover {
+.burger.active:hover {
     background: none;
 }
 
@@ -72,7 +72,7 @@
         width: 23px;
     }
 
-    .burger__button-overlay {
+    .burger {
         right: 21px;
     }
 
