@@ -37,6 +37,7 @@
     border-radius: 8px;
     padding-left: 25px;
     padding-right: 25px;
+    min-height: 70px;
 }
 
 .searchform__submit-button {
