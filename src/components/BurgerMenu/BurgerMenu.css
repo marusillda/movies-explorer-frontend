@@ -1,0 +1,39 @@
+@media screen and (max-width: 768px) {
+    .burger-overlay {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 50;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .burger-overlay_hidden {
+        display: none;
+    }
+
+    .burger-menu_visible {
+        transform: translateX(0);
+        transition: ease-out 0.3s;
+    }
+
+    .burger-menu_hidden {
+        transform: translateX(100%);
+        transition: ease-out 0.3s;
+    }
+
+    .burger-menu {
+        width: 67.7%;
+        height: 100%;
+        background-color: rgba(32, 32, 32, 1);
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .burger-menu {
+        width: 100%;
+    }
+}

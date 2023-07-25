@@ -1,0 +1,86 @@
+/* burger button */
+.burger__button-bar {
+    width: 100%;
+    height: 2.6px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* clicked */
+
+.burger__button-bar.clicked:nth-child(1) {
+    transform: rotate(45deg) translate(18px, -2px) scale(0.9);
+    ;
+    transition: ease-out 0.5s;
+}
+
+.burger__button-bar.clicked:nth-child(2) {
+    transform: scale(0.01);
+    transition: ease-out 0.5s;
+}
+
+.burger__button-bar.clicked:nth-child(3) {
+    transform: rotate(135deg) translate(-16px, -4px) scale(0.9);
+    transition: ease-out 0.5s;
+}
+
+/* unclicked */
+
+.burger__button-bar.unclicked {
+    transform: rotate(0) translate(0);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+}
+
+/* ловит клики */
+.burger.clicked {
+    position: fixed;
+}
+
+.burger {
+    position: absolute;
+    z-index: 1000;
+    top: 23px;
+    right: 37px;
+}
+
+.burger.active:hover {
+    background: none;
+}
+
+/* burger button container */
+.burger__button-container {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    .burger__button-container {
+        height: 22px;
+        width: 27px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        cursor: pointer;
+        margin-top: 4px;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .burger__button-container {
+        height: 21px;
+        width: 23px;
+    }
+
+    .burger {
+        right: 21px;
+    }
+
+    .burger__button-bar.clicked:nth-child(1) {
+        transform: rotate(45deg) translate(3px, -3px);
+    }
+
+    .burger__button-bar.clicked:nth-child(3) {
+        transform: rotate(135deg) translate(-16px, 10px);
+    }
+}
