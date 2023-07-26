@@ -99,6 +99,17 @@
     text-align: right;
 }
 
+.profile__error-message {
+    display: block;
+    min-height: 14px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: normal;
+    color: rgba(238, 52, 101, 1);
+    padding-bottom: 20px;
+}
+
 .profile__submit-button {
     min-height: 45px;
     color: rgba(255, 255, 255, 1);

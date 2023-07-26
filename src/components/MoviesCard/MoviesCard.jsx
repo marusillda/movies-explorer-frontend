@@ -5,6 +5,7 @@ import './MoviesCard.css';
 export default function MoviesCard({ movie, onMovieClick }) {
     const [isLiked, setIsLiked] = useState(false);
     const location = useLocation();
+    const { REACT_APP_BASE_MOVIES_URL } = process.env;
 
     const onMovieLike = () => {
         isLiked ? setIsLiked(false) : setIsLiked(true);
@@ -14,13 +15,19 @@ export default function MoviesCard({ movie, onMovieClick }) {
         `moviescard__like-button ${isLiked && 'moviescard__like-button-fill'}`
     );
 
+    const calcDuration = (duration) => {
+        const hours = Math.floor(duration / 60);
+        const minutes = duration % 60;
+        return `${hours}ч ${minutes}м`;
+    }
+
     return (
         <li className="moviescard">
             <a href="https://www.youtube.com/watch?v=iudeJyaOxss" className='selectable-link' target="_blank" rel="noreferrer">
-                <img className="moviescard__photo" src={movie.photo} alt={`Фильм ${movie.name}`} />
+                <img className="moviescard__photo" src={`${REACT_APP_BASE_MOVIES_URL}${movie.image.url}`} alt={`Фильм ${movie.nameRU}`} />
             </a>
             <div className="moviescard__info">
-                <h2 className="moviescard__info-name">{movie.name}</h2>
+                <h2 className="moviescard__info-name">{movie.nameRU}</h2>
                 {(location.pathname === '/movies') && <button
                     type="button"
                     className={moviesLikeButtonClassName}
@@ -35,7 +42,7 @@ export default function MoviesCard({ movie, onMovieClick }) {
                     >
                     </div>}
             </div>
-            <p className="moviescard__info-duration">{movie.duration}</p>
+            <p className="moviescard__info-duration">{calcDuration(movie.duration)}</p>
         </li>
     )
 }

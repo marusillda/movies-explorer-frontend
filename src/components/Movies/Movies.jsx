@@ -1,9 +1,8 @@
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { movies } from '../../utils/constants';
 
-export default function Movies() {
+export default function Movies({ movies }) {
     return (
         <section className="movies" aria-label="Фильмы">
             <SearchForm />

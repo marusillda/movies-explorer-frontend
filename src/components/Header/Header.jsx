@@ -23,7 +23,7 @@ export default function Header() {
             <div className={headerLineClass}>
                 <Logo position="header__logo-position" />
                 {
-                    !currentUser
+                    currentUser._id
                         ?
                         <>
                             <BurgerButton isMenuClicked={isMenuClicked} onClick={handleNavbarClick} />

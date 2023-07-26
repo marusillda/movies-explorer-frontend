@@ -4,27 +4,42 @@ import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-export default function Profile({ changeUser }) {
-    const { values, handleChange, errors, isValid } = useFormAndValidation();
+export default function Profile({ signOut, onUpdateUser, profileMessage }) {
+    const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
 
     const currentUser = useContext(CurrentUserContext);
-
     const [isEditMode, setIsEditMode] = useState(false);
     const [isProfileChanged, setIsProfileChanged] = useState(false);
+    const [isMessageShow, setIsMessageShow] = useState(false);
 
 
     useEffect(() => {
-        setIsProfileChanged(currentUser?.name !== values.name || currentUser?.email !== values.email);
+        const isProfileChanged = currentUser?.name !== values.name || currentUser?.email !== values.email;
+        setIsProfileChanged(isProfileChanged);
+        setIsMessageShow(!isProfileChanged);
     }, [values, currentUser])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        changeUser(values);
+        setIsMessageShow(true);
+        onUpdateUser({
+            name: values.name,
+            email: values.email,
+        });
     };
+
+    useEffect(() => {
+        setValues({
+            name: currentUser.name || '',
+            email: currentUser.email || '',
+        })
+        // eslint-disable-next-line
+    }, [currentUser]);
+
 
     return (
         <section className="profile" aria-label="Редактирование профиля пользователя">
-            <h1 className="profile__title">Привет, Виталий{currentUser?.name}!</h1>
+            <h1 className="profile__title">Привет, {currentUser?.name}!</h1>
             <form className="profile__form" onSubmit={handleSubmit}>
                 <div className="profile__form-container">
                     <div className="profile__field-container">
@@ -66,37 +81,39 @@ export default function Profile({ changeUser }) {
                         {errors.email}
                     </span>
                 </div>
-                <div className="profile__buttons">
-                    {isEditMode
-                        ?
-                        (
+                {isEditMode
+                    ?
+                    (<div className="profile__buttons">
+                        <span className='profile__error-message'>
+                            {isMessageShow && profileMessage}
+                        </span>
+                        <button
+                            disabled={!isValid || !isProfileChanged}
+                            type="submit"
+                            className="profile__submit-button selectable-button"
+                            aria-label="Кнопка Сохранить"
+                        >
+                            Сохранить
+                        </button>
+                    </div>
+                    )
+                    :
+                    (
+                        <div className="profile__buttons">
                             <button
-                                disabled={!isValid || !isProfileChanged}
-                                type="submit"
-                                className="profile__submit-button selectable-button"
-                                aria-label="Кнопка Сохранить"
+                                type="button"
+                                className="profile__button selectable-link"
+                                aria-label="Кнопка редактирования"
+                                onClick={() => setIsEditMode(true)}
                             >
-                                Сохранить
+                                Редактировать
                             </button>
-                        )
-                        :
-                        (
-                            <>
-                                <button
-                                    type="button"
-                                    className="profile__button selectable-link"
-                                    aria-label="Кнопка редактирования"
-                                    onClick={() => setIsEditMode(true)}
-                                >
-                                    Редактировать
-                                </button>
-                                <Link className="profile__button profile__button_type_exit selectable-link" to="/">
-                                    Выйти из аккаунта
-                                </Link>
-                            </>
-                        )
-                    }
-                </div>
+                            <Link className="profile__button profile__button_type_exit selectable-link" to="/" onClick={signOut}>
+                                Выйти из аккаунта
+                            </Link>
+                        </div>
+                    )
+                }
             </form>
         </section>
     )

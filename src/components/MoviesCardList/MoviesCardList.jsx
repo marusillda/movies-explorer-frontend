@@ -10,7 +10,7 @@ export default function MoviesCardList({ movies }) {
         <ul className="moviescardlist">
             {movies.slice(0, moviesCount).map(movie => (
                 <MoviesCard
-                    key={movie._id}
+                    key={movie.id}
                     movie={movie} />
             ))
             }
