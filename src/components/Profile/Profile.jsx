@@ -3,15 +3,18 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import {
+    HTTP_CONFLICT
+} from '../../utils/constants';
 
-export default function Profile({ signOut, onUpdateUser, profileMessage }) {
+export default function Profile({ signOut, onUpdateUser }) {
     const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
 
     const currentUser = useContext(CurrentUserContext);
     const [isEditMode, setIsEditMode] = useState(false);
     const [isProfileChanged, setIsProfileChanged] = useState(false);
     const [isMessageShow, setIsMessageShow] = useState(false);
-
+    const [profileMessage, setProfileMessage] = useState('');
 
     useEffect(() => {
         const isProfileChanged = currentUser?.name !== values.name || currentUser?.email !== values.email;
@@ -25,7 +28,13 @@ export default function Profile({ signOut, onUpdateUser, profileMessage }) {
         onUpdateUser({
             name: values.name,
             email: values.email,
-        });
+        })
+            .then(() => { setProfileMessage('Данные профиля успешно обновлены.'); })
+            .catch(error => {
+                error.code === HTTP_CONFLICT
+                    ? setProfileMessage('Пользователь с таким email уже существует.')
+                    : setProfileMessage('При обновлении профиля произошла ошибка.');
+            });;
     };
 
     useEffect(() => {

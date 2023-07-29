@@ -21,18 +21,21 @@ import {
   getUserProfile,
   changeUserProfile
 } from '../../utils/MainApi';
+import { getSavedMovies } from '../../utils/MainApi';
 import {
-  HTTP_CONFLICT
-} from '../../utils/constants';
+  getLocalStorageToken,
+  setLocalStorageToken,
+  removeLocalStorageToken,
 
+  getLocalStorageMovies,
+  setLocalStorageMovies,
+  removeLocalStorageMovies,
 
+  removeLocalStorageUserSearch
+} from '../../utils/localStorage';
 function App() {
   const location = useLocation();
   const navigate = useRef(useNavigate());
-
-  const [movies, setMovies] = useState([]);
-
-
   const [currentUser, setCurrentUser] = useState({
     _id: "",
     email: "",
@@ -42,11 +45,11 @@ function App() {
   const [token, setToken] = useState("");
   const [isLoginFailed, setIsLoginFailed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [profileMessage, setProfileMessage] = useState('');
+
   //Флаг окончания загрузки из LocalStorage
   const [isLocalStorageRead, setIsLocalStorageRead] = useState(false);
   const saveToken = ({ token }) => {
-    localStorage.setItem("token", token);
+    setLocalStorageToken(token);
     setToken(token);
     setIsLoggedIn(true);
   };
@@ -74,7 +77,7 @@ function App() {
   }
 
   useEffect(() => {
-    setToken(localStorage.getItem("token"));
+    setToken(getLocalStorageToken());
     setIsLocalStorageRead(true);
   }, [])
 
@@ -106,7 +109,9 @@ function App() {
   }, [isLoggedIn]);
 
   const signOut = (() => {
-    localStorage.removeItem("token");
+    removeLocalStorageToken();
+    removeLocalStorageMovies();
+    removeLocalStorageUserSearch();
     setToken("");
     setIsLoggedIn(false);
     setCurrentUser({
@@ -116,37 +121,25 @@ function App() {
   })
 
   const handleUpdateUser = ((userProfile) => {
-    changeUserProfile(userProfile, token).then(user => {
+    return changeUserProfile(userProfile, token).then(user => {
       setCurrentUser(user);
-      setProfileMessage('Данные профиля успешно обновлены.');
     })
-      .catch(error => {
-        error.code === HTTP_CONFLICT
-          ? setProfileMessage('Пользователь с таким email уже существует.')
-          : setProfileMessage('При обновлении профиля произошла ошибка.');
-      });
+
   });
 
+  const loadMoviesAsync = () => {
+    const movies = getLocalStorageMovies();
+    if (movies.length > 0) {
+      return Promise.resolve(movies);
+    }
+    return getInitialMovies()
+      .then(movies => {
+        setLocalStorageMovies(movies)
+        return movies;
+      })
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  useEffect(() => {
-    getInitialMovies().then(movies => {
-      setMovies(movies);
-    })
-      .catch(error => console.log(`Ошибка загрузки списка фильмов: ${error}`));
-  }, []);
+  const loadSavedMoviesAsync = () => getSavedMovies(token);
 
   if (isLoading) {
     return (<Preloader />)
@@ -156,12 +149,11 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
         <Routes>
-          <Route path="/" element={<LayOut showFooter={(location.pathname !== '/profile')} showHeader={true} />}>
+          <Route path="/" element={<LayOut isLoggedIn={isLoggedIn} showFooter={(location.pathname !== '/profile')} showHeader={true} />}>
             <Route path="" element={<Main />} />
             <Route path="profile" element={
               <ProtectedRoute
-                loggedIn={isLoggedIn}
-                profileMessage={profileMessage}
+                isLoggedIn={isLoggedIn}
                 onUpdateUser={handleUpdateUser}
                 signOut={signOut}
                 element={Profile}
@@ -169,15 +161,16 @@ function App() {
             } />
             <Route path="movies" element={
               <ProtectedRoute
-                loggedIn={isLoggedIn}
-                movies={movies}
+                isLoggedIn={isLoggedIn}
+                loadMovies={loadMoviesAsync}
+                loadSavedMovies={loadSavedMoviesAsync}
                 element={Movies}
               />
             } />
             <Route path="saved-movies" element={
               <ProtectedRoute
-                loggedIn={isLoggedIn}
-                movies={movies}
+                isLoggedIn={isLoggedIn}
+                loadSavedMovies={loadSavedMoviesAsync}
                 element={SavedMovies}
               />
             } />
@@ -189,7 +182,7 @@ function App() {
           </Route>
         </Routes>
       </div>
-    </CurrentUserContext.Provider>
+    </CurrentUserContext.Provider >
   );
 }
 

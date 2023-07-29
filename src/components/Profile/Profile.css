@@ -80,7 +80,6 @@
 
 .profile__field:focus {
     outline: 0;
-    opacity: 0.8;
 }
 
 .profile__field-error {
@@ -128,6 +127,7 @@
 
 .profile__submit-button:disabled {
     opacity: .8;
+    cursor: default;
 }
 
 .profile__buttons {

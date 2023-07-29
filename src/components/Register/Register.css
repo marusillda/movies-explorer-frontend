@@ -96,6 +96,7 @@
 
 .register__submit-button:disabled {
     opacity: .8;
+    cursor: default;
 }
 
 .register__signin {

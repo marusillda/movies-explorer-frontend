@@ -96,6 +96,7 @@
 
 .login__submit-button:disabled {
     opacity: .8;
+    cursor: default;
 }
 
 .login__signin {

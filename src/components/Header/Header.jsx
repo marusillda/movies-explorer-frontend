@@ -6,11 +6,10 @@ import { useContext, useState } from 'react';
 import BurgerButton from '../BurgerButton/BurgerButton';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-export default function Header() {
+export default function Header({ isLoggedIn }) {
     const { pathname } = useLocation();
     const isMainPage = pathname === '/';
     const headerLineClass = isMainPage ? 'header__line header__line_path_main' : 'header__line';
-    const currentUser = useContext(CurrentUserContext);
     const [isMenuClicked, setIsMenuClicked] = useState(false);
 
     const handleNavbarClick = () => {
@@ -23,7 +22,7 @@ export default function Header() {
             <div className={headerLineClass}>
                 <Logo position="header__logo-position" />
                 {
-                    currentUser._id
+                    isLoggedIn
                         ?
                         <>
                             <BurgerButton isMenuClicked={isMenuClicked} onClick={handleNavbarClick} />

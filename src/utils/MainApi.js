@@ -4,17 +4,17 @@ import { baseUrl } from './constants';
 const makeRequest = createMakeRequest(baseUrl);
 
 export const register = (name, email, password) => makeRequest('/signup', 'POST',
-    {
-        name,
-        password,
-        email,
-    });
+  {
+    name,
+    password,
+    email,
+  });
 
 export const authorize = (email, password) => makeRequest('/signin', 'POST',
-    {
-        password,
-        email,
-    });
+  {
+    password,
+    email,
+  });
 
 /**
   * Запрос данных пользователя
@@ -28,31 +28,18 @@ export const getUserProfile = (token) => makeRequest('/users/me', 'GET', null, t
 export const changeUserProfile = (userProfile, token) => makeRequest('/users/me', 'PATCH', userProfile, token);
 
 /**
-   * Запрос на создание новой карточки
-   * @param {Object} card
+   * Запрос списка фильмов
    */
-export const addNewCard = (card, token) => makeRequest('/cards', 'POST', card, token);
+export const getSavedMovies = (token) => makeRequest('/movies', 'GET', null, token);
 
 /**
-   * Запрос на удаление карточки
-   * @param {String} cardId
+   * Запрос на добавление фильма
+   * @param {Object} movie
    */
-export const deleteCard = (cardId, token) => makeRequest(`/cards/${cardId}`, 'DELETE', null, token);
+export const addMovie = (movie, token) => makeRequest('/movies', 'POST', movie, token);
 
 /**
-  * Запрос на добавление лайка карточке
-  * @param {String} cardId
-  */
-export const likeCard = (cardId, token) => makeRequest(`/cards/${cardId}/likes`, 'PUT', null, token);
-
-/**
-  * Запрос на снятие лайка с карточки
-  * @param {String} cardId
-  */
-export const unlikeCard = (cardId, token) => makeRequest(`/cards/${cardId}/likes`, 'DELETE', null, token);
-
-/**
-  * Запрос на изменение аватара
-  * @param {String} avatar
-  */
-export const changeAvatar = (avatar, token) => makeRequest('/users/me/avatar', 'PATCH', { avatar }, token);
+   * Запрос на удаление фильма
+   * @param {String} movieId
+   */
+export const deleteMovie = (movieId, token) => makeRequest(`/movies/${movieId}`, 'DELETE', null, token);
