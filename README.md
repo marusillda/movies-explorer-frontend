@@ -2,4 +2,4 @@
 СКАЧАТЬ МАКЕТ С ЯНДЕКС ДИСК: https://disk.yandex.ru/d/rCWxnXTRqKTiTg
 
 Ссылка на PULL REQUEST https://github.com/marusillda/movies-explorer-frontend/pull/2
-Ссылк на сайт: https://movies.marusillda.nomoreparties.sbs/movies
+Ссылка на сайт: https://movies.marusillda.nomoreparties.sbs
