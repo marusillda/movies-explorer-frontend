@@ -49,6 +49,7 @@ export default function SearchForm({ onSearchClicked, savedSearch }) {
                     placeholder="Фильм"
                     required
                     minLength='1'
+                    autoComplete='off'
                     value={values.searchText || ''}
                     onChange={handleChange}
                 />
