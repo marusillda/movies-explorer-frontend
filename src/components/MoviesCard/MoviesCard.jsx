@@ -26,7 +26,7 @@ export default function MoviesCard({ movie, showAddToSavedButton }) {
         <li className="moviescard">
             {
                 errorMessage
-                    ? <div className=''>{errorMessage}</div>
+                    ? <div className="moviescard__error-message">{errorMessage}</div>
                     :
                     <a href="https://www.youtube.com/watch?v=iudeJyaOxss" className='selectable-link' target="_blank" rel="noreferrer">
                         <img className="moviescard__photo" src={movie.image} alt={`Фильм ${movie.nameRU}`} />
