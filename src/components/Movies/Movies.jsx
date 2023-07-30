@@ -1,7 +1,7 @@
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import { useMovieSearch } from '../../hooks/useMovieSearch';
 import { useScreenResize } from '../../hooks/useScreenResize';
 import { getLocalStorageUserSearch, setLocalStorageUserSearch } from '../../utils/localStorage';
@@ -11,12 +11,14 @@ import {
     SEARCH_NOT_FOUND_MESSAGE,
     SEARCH_SHORT_MOVIES_NOT_FOUND_MESSAGE,
 } from '../../utils/constants';
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 import Preloader from '../Preloader/Preloader';
 
-export default function Movies({ loadMovies, loadSavedMovies }) {
+export default function Movies({ loadMovies }) {
     const [userMessage, setUserMessage] = useState(FIRST_TIP_MESSSAGE);
     const [userSearch, setUserSearch] = useState({});
     const { movies, searchResults, searchText, shortMoviesOnly, setMovies, setSearchResults, setSearchText, setShortMoviesOnly } = useMovieSearch();
+    const { savedMovies } = useContext(SavedMoviesContext);
     const { isMobile, isTablet } = useScreenResize();
     const [showMoreClickedCounter, setShowMoreClickedCounter] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
@@ -66,6 +68,14 @@ export default function Movies({ loadMovies, loadSavedMovies }) {
             (shortMoviesOnly ? setUserMessage(SEARCH_SHORT_MOVIES_NOT_FOUND_MESSAGE) : setUserMessage(SEARCH_NOT_FOUND_MESSAGE));
     }, [searchText, shortMoviesOnly, emptySearchResults, searchResults]);
 
+    const pagedSearchResults = useMemo(() => searchResults
+        .slice(0, pageSize)
+        .map(result => {
+            result._id = savedMovies.find(({ movieId }) => result.movieId === movieId)?._id;
+            return result;
+        })
+        , [searchResults, savedMovies, pageSize]);
+
     return (
         <section className="movies" aria-label="Фильмы">
             <SearchForm onSearchClicked={onSearchClicked} savedSearch={userSearch} />
@@ -73,7 +83,7 @@ export default function Movies({ loadMovies, loadSavedMovies }) {
                 ?
                 isLoading ? <Preloader /> : <span className="movies-message">{userMessage}</span>
                 :
-                <MoviesCardList movies={searchResults.slice(0, pageSize)} />}
+                <MoviesCardList movies={pagedSearchResults} showAddToSavedButton={true} />}
             {showMore && <button className="movies__more selectable-button" type="button" onClick={() => { setShowMoreClickedCounter(showMoreClickedCounter + 1) }}>Ещё</button>}
         </section>
     )

@@ -45,7 +45,7 @@ export default function SearchForm({ onSearchClicked, savedSearch }) {
                     placeholder="Фильм"
                     required
                     minLength='1'
-                    value={values.searchText}
+                    value={values.searchText || ''}
                     onChange={handleChange}
                 />
                 <button
@@ -60,7 +60,7 @@ export default function SearchForm({ onSearchClicked, savedSearch }) {
             <ToggleButton
                 name="shortMoviesOnly"
                 text="Короткометражки"
-                value={values.shortMoviesOnly}
+                value={values.shortMoviesOnly || false}
                 onChange={handleChange} />
             {errors.searchText && <span className="searchform__error">
                 {SEARCH_VALIDATION_ERROR_MESSAGE}

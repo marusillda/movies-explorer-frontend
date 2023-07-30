@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
@@ -21,18 +22,23 @@ import {
   getUserProfile,
   changeUserProfile
 } from '../../utils/MainApi';
-import { getSavedMovies } from '../../utils/MainApi';
+import {
+  getSavedMovies,
+  addMovie,
+  deleteMovie
+} from '../../utils/MainApi';
 import {
   getLocalStorageToken,
   setLocalStorageToken,
   removeLocalStorageToken,
-
   getLocalStorageMovies,
   setLocalStorageMovies,
   removeLocalStorageMovies,
-
   removeLocalStorageUserSearch
 } from '../../utils/localStorage';
+import { convertMovies } from '../../utils/converter';
+
+
 function App() {
   const location = useLocation();
   const navigate = useRef(useNavigate());
@@ -40,6 +46,7 @@ function App() {
     _id: "",
     email: "",
   });
+  const [savedMovies, setSavedMovies] = useState([]);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
@@ -105,6 +112,9 @@ function App() {
     if (isLocalStorageRead && !isLoggedIn) {
       navigate.current('/', { replace: true });
     }
+    if (isLoggedIn) {
+      getSavedMovies(token).then(movies => { setSavedMovies(movies) });
+    }
     // eslint-disable-next-line
   }, [isLoggedIn]);
 
@@ -133,13 +143,28 @@ function App() {
       return Promise.resolve(movies);
     }
     return getInitialMovies()
+      .then(movies => movies.map(convertMovies))
       .then(movies => {
         setLocalStorageMovies(movies)
         return movies;
       })
   }
 
-  const loadSavedMoviesAsync = () => getSavedMovies(token);
+  const addToSavedMovies = (movie) => {
+    return addMovie(movie, token)
+      .then(savedMovie => {
+        setSavedMovies([...savedMovies, savedMovie]);
+        return savedMovie;
+      })
+  }
+
+  const deleteFromSavedMovies = (movieId) => {
+    return deleteMovie(movieId, token)
+      .then(deletedMovie => {
+        setSavedMovies(savedMovies.filter(m => m._id !== movieId));
+        return deletedMovie;
+      })
+  }
 
   if (isLoading) {
     return (<Preloader />)
@@ -147,41 +172,41 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<LayOut isLoggedIn={isLoggedIn} showFooter={(location.pathname !== '/profile')} showHeader={true} />}>
-            <Route path="" element={<Main />} />
-            <Route path="profile" element={
-              <ProtectedRoute
-                isLoggedIn={isLoggedIn}
-                onUpdateUser={handleUpdateUser}
-                signOut={signOut}
-                element={Profile}
-              />
-            } />
-            <Route path="movies" element={
-              <ProtectedRoute
-                isLoggedIn={isLoggedIn}
-                loadMovies={loadMoviesAsync}
-                loadSavedMovies={loadSavedMoviesAsync}
-                element={Movies}
-              />
-            } />
-            <Route path="saved-movies" element={
-              <ProtectedRoute
-                isLoggedIn={isLoggedIn}
-                loadSavedMovies={loadSavedMoviesAsync}
-                element={SavedMovies}
-              />
-            } />
-          </Route>
-          <Route path="/" element={<LayOut showFooter={false} showHeader={false} />}>
-            <Route path="signup" element={<Register registerUser={registerUser} />} />
-            <Route path="signin" element={<Login loginUser={loginUser} />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </div>
+      <SavedMoviesContext.Provider value={{ savedMovies, addToSavedMovies, deleteFromSavedMovies }}>
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<LayOut isLoggedIn={isLoggedIn} showFooter={(location.pathname !== '/profile')} showHeader={true} />}>
+              <Route path="" element={<Main />} />
+              <Route path="profile" element={
+                <ProtectedRoute
+                  isLoggedIn={isLoggedIn}
+                  onUpdateUser={handleUpdateUser}
+                  signOut={signOut}
+                  element={Profile}
+                />
+              } />
+              <Route path="movies" element={
+                <ProtectedRoute
+                  isLoggedIn={isLoggedIn}
+                  loadMovies={loadMoviesAsync}
+                  element={Movies}
+                />
+              } />
+              <Route path="saved-movies" element={
+                <ProtectedRoute
+                  isLoggedIn={isLoggedIn}
+                  element={SavedMovies}
+                />
+              } />
+            </Route>
+            <Route path="/" element={<LayOut showFooter={false} showHeader={false} />}>
+              <Route path="signup" element={<Register registerUser={registerUser} />} />
+              <Route path="signin" element={<Login loginUser={loginUser} />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </div>
+      </SavedMoviesContext.Provider>
     </CurrentUserContext.Provider >
   );
 }

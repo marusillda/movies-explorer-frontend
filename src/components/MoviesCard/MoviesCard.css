@@ -63,6 +63,21 @@
     opacity: .7;
 }
 
+.moviescard__delete-button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+    z-index: 1000;
+}
+
+.moviescard:hover .moviescard__delete-button {
+    background: center / contain no-repeat url(../../images/movies-close-button.svg);
+}
+
 .moviescard__like-button-fill {
     background: center / contain no-repeat url(../../images/movies-like-button-fill.svg);
 }
@@ -76,14 +91,6 @@
     transition: opacity .8s ease;
     cursor: pointer;
     z-index: 1;
-}
-
-.moviescard-overlay:hover {
-    background-image: url("../../images/movies-close-button.svg");
-    background-repeat: no-repeat;
-    background-size: 32px 32px;
-    background-position: 301px -2px;
-    opacity: 1;
 }
 
 @media screen and (max-width: 870px) {

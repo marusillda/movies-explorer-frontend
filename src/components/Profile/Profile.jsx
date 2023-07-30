@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import {
-    HTTP_CONFLICT
+    HTTP_CONFLICT,
+    PROFILE_SUCCESS_UPDATE_MESSAGE,
+    USER_EMAIL_EXISTS_MESSAGE,
+    PROFILE_UPDATE_ERROR_MESSAGE
 } from '../../utils/constants';
 
 export default function Profile({ signOut, onUpdateUser }) {
@@ -29,11 +32,11 @@ export default function Profile({ signOut, onUpdateUser }) {
             name: values.name,
             email: values.email,
         })
-            .then(() => { setProfileMessage('Данные профиля успешно обновлены.'); })
+            .then(() => { setProfileMessage(PROFILE_SUCCESS_UPDATE_MESSAGE); })
             .catch(error => {
                 error.code === HTTP_CONFLICT
-                    ? setProfileMessage('Пользователь с таким email уже существует.')
-                    : setProfileMessage('При обновлении профиля произошла ошибка.');
+                    ? setProfileMessage(USER_EMAIL_EXISTS_MESSAGE)
+                    : setProfileMessage(PROFILE_UPDATE_ERROR_MESSAGE);
             });;
     };
 
