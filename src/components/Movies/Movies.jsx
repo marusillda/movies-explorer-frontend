@@ -24,6 +24,8 @@ export default function Movies({ loadMovies }) {
     const [isLoading, setIsLoading] = useState(false);
 
     const onSearchClicked = (searchText, shortMoviesOnly) => {
+        if (!searchText) { return; }
+
         let promise = Promise.resolve();
         if (movies.length === 0) {
             setIsLoading(true);

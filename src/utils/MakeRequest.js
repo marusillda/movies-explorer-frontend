@@ -1,4 +1,8 @@
-function MovieError(code, message) {
+import {
+    SERVER_ERROR_MESSAGE,
+    HTTP_SERVER_ERROR
+} from './constants';
+export function MovieError(code, message) {
     this.code = code;
     this.message = message;
 }
@@ -27,5 +31,9 @@ export const createMakeRequest = (baseUrl) => (url, method, body, token) => {
                     return body;
                 }
                 throw new MovieError(response.status, body.message);
-            }));
+            }))
+        .catch(error => {
+            if (error instanceof MovieError) { throw error; }
+            throw new MovieError(HTTP_SERVER_ERROR, SERVER_ERROR_MESSAGE);
+        });
 };

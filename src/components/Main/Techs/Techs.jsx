@@ -2,7 +2,6 @@ import './Techs.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
 export default function Techs() {
-
     return (
         <section className="techs" aria-label="Технологии">
             <SectionTitle title="Технологии" />

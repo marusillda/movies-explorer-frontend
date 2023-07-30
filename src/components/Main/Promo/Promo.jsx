@@ -2,7 +2,6 @@ import './Promo.css';
 import { HashLink } from 'react-router-hash-link';
 
 export default function Promo() {
-
     return (
         <section className="promo">
             <div className="promo__project">

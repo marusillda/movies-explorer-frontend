@@ -37,7 +37,7 @@ export default function Profile({ signOut, onUpdateUser }) {
                 error.code === HTTP_CONFLICT
                     ? setProfileMessage(USER_EMAIL_EXISTS_MESSAGE)
                     : setProfileMessage(PROFILE_UPDATE_ERROR_MESSAGE);
-            });;
+            });
     };
 
     useEffect(() => {

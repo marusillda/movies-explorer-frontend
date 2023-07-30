@@ -2,7 +2,6 @@ import './Portfolio.css';
 import portfolioLink from '../../../images/portfolio-link.svg';
 
 export default function Portfolio() {
-
     return (
         <section className="portfolio" aria-label="Портфолио">
             <h2 className="portfolio__title">Портфолио</h2>

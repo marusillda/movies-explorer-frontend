@@ -2,7 +2,6 @@ import './AboutProject.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
 export default function AboutProject() {
-
     return (
         <section id='aboutProject' className="aboutproject" aria-label="О проекте">
             <SectionTitle title="О проекте" />

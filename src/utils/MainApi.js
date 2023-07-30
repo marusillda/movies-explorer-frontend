@@ -1,5 +1,9 @@
-import { createMakeRequest } from './MakeRequest';
-import { baseUrl } from './constants';
+import { createMakeRequest, MovieError } from './MakeRequest';
+import {
+  baseUrl,
+  USER_WRONG_TOKEN_MESSAGE,
+  HTTP_BAD_REQUEST
+} from './constants';
 
 const makeRequest = createMakeRequest(baseUrl);
 
@@ -14,6 +18,12 @@ export const authorize = (email, password) => makeRequest('/signin', 'POST',
   {
     password,
     email,
+  })
+  .then(body => {
+    if (!body.token) {
+      throw new MovieError(HTTP_BAD_REQUEST, USER_WRONG_TOKEN_MESSAGE)
+    }
+    return { token: body.token };
   });
 
 /**

@@ -8,7 +8,10 @@ import {
 
 export default function SearchForm({ onSearchClicked, savedSearch }) {
     const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormAndValidation();
-    const [lastSearch, setLastSearch] = useState({});
+    const [lastSearch, setLastSearch] = useState({
+        searchText: '',
+        shortMoviesOnly: false
+    });
     const searchMovies = (values) => onSearchClicked(values.searchText, values.shortMoviesOnly);
 
     const handleSubmit = (e) => {
@@ -18,19 +21,20 @@ export default function SearchForm({ onSearchClicked, savedSearch }) {
     }
 
     useEffect(() => {
-        setValues(savedSearch);
-        setIsValid(savedSearch.searchText !== '');
-        setLastSearch(savedSearch);
+        if (savedSearch) {
+            setValues(savedSearch);
+            setIsValid(savedSearch?.searchText);
+            setLastSearch(savedSearch);
+        } else {
+            setIsValid(false);
+        }
         // eslint-disable-next-line
     }, [savedSearch])
-
 
     useEffect(() => {
         const { searchText } = lastSearch;
         const { shortMoviesOnly } = values;
-        if (searchText) {
-            searchMovies({ searchText, shortMoviesOnly });
-        }
+        searchMovies({ searchText, shortMoviesOnly });
         // eslint-disable-next-line
     }, [values.shortMoviesOnly]);
 

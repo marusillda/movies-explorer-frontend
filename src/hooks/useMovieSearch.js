@@ -17,10 +17,11 @@ export function useMovieSearch() {
     }
 
     useEffect(() => {
-        if (!searchText || movies.length === 0) {
+        if (movies.length === 0) {
+            setSearchResults([]);
             return;
         }
-        const filterBySearchText = movie => searchMatches(movie.nameRU, searchText) || searchMatches(movie.nameEN, searchText);
+        const filterBySearchText = movie => !searchText || searchMatches(movie.nameRU, searchText) || searchMatches(movie.nameEN, searchText);
         const filterByShowMoviesOnly = movie => !shortMoviesOnly || movie.duration <= 40;
         const filteredMovies = movies
             .filter(filterBySearchText)

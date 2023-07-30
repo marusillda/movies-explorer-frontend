@@ -38,7 +38,6 @@ import {
 } from '../../utils/localStorage';
 import { convertMovies } from '../../utils/converter';
 
-
 function App() {
   const location = useLocation();
   const navigate = useRef(useNavigate());
@@ -47,10 +46,8 @@ function App() {
     email: "",
   });
   const [savedMovies, setSavedMovies] = useState([]);
-  const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
-  const [isLoginFailed, setIsLoginFailed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   //Флаг окончания загрузки из LocalStorage
@@ -62,25 +59,15 @@ function App() {
   };
 
   const registerUser = ({ name, email, password }) => {
-    register(name, email, password)
+    return register(name, email, password)
       .then(saveToken)
-      .then(() => { navigate.current('/movies', { replace: true }); })
-      .catch((error) => {
-        console.log(`Ошибка регистрации пользователя: ${error}`);
-      })
-      .finally(() => {
-        setIsRegistered(true);
-      });
+      .then(() => { navigate.current('/movies', { replace: true }); });
   }
 
   const loginUser = ({ password, email }) => {
-    authorize(email, password)
+    return authorize(email, password)
       .then(saveToken)
-      .then(() => { navigate.current('/movies', { replace: true }); })
-      .catch((error) => {
-        console.log(`Ошибка авторизации пользователя: ${error}`);
-        setIsLoginFailed(true);
-      })
+      .then(() => { navigate.current('/movies', { replace: true }); });
   }
 
   useEffect(() => {

@@ -1,15 +1,27 @@
 import './Register.css';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../Logo/Logo';
+import {
+    HTTP_CONFLICT,
+    USER_EMAIL_EXISTS_MESSAGE,
+    REGISTER_ERROR_MESSAGE
+} from '../../utils/constants';
 
 export default function Register({ registerUser }) {
     const { values, handleChange, errors, isValid } = useFormAndValidation()
+    const [registerMessage, setRegisterMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        registerUser(values);
-    };
+        registerUser(values)
+            .catch((error) => {
+                error.code === HTTP_CONFLICT
+                    ? setRegisterMessage(USER_EMAIL_EXISTS_MESSAGE)
+                    : setRegisterMessage(REGISTER_ERROR_MESSAGE);
+            })
+    }
 
     return (
         <section className="register" aria-label="Регистрация на сайте">
@@ -71,14 +83,19 @@ export default function Register({ registerUser }) {
                         {errors.password}
                     </span>
                 </div>
-                <button
-                    disabled={!isValid}
-                    type="submit"
-                    className="register__submit-button selectable-button"
-                    aria-label="Кнопка Зарегистрироваться"
-                >
-                    Зарегистрироваться
-                </button>
+                <div className="register__buttons">
+                    <span className="register__error-message">
+                        {registerMessage}
+                    </span>
+                    <button
+                        disabled={!isValid}
+                        type="submit"
+                        className="register__submit-button selectable-button"
+                        aria-label="Кнопка Зарегистрироваться"
+                    >
+                        Зарегистрироваться
+                    </button>
+                </div>
             </form>
             <div className="register__signin">
                 <p className="register__signin-link">Уже зарегистрированы? </p>

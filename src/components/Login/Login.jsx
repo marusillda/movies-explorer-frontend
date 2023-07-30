@@ -1,14 +1,25 @@
 import './Login.css';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../Logo/Logo';
+import {
+    HTTP_UNAUTHORIZED,
+    USER_ERROR_LOGIN_MESSAGE
+} from '../../utils/constants';
 
 export default function Login({ loginUser }) {
-    const { values, handleChange, errors, isValid } = useFormAndValidation()
+    const { values, handleChange, errors, isValid } = useFormAndValidation();
+    const [loginMessage, setLoginMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        loginUser(values);
+        loginUser(values)
+            .catch((error) => {
+                error.code === HTTP_UNAUTHORIZED
+                    ? setLoginMessage(USER_ERROR_LOGIN_MESSAGE)
+                    : setLoginMessage(error.message);
+            })
     };
 
     return (
@@ -52,14 +63,19 @@ export default function Login({ loginUser }) {
                         {errors.password}
                     </span>
                 </div>
-                <button
-                    disabled={!isValid}
-                    type="submit"
-                    className="login__submit-button selectable-button"
-                    aria-label="Кнопка Войти"
-                >
-                    Войти
-                </button>
+                <div className="login__buttons">
+                    <span className="login__error-message">
+                        {loginMessage}
+                    </span>
+                    <button
+                        disabled={!isValid}
+                        type="submit"
+                        className="login__submit-button selectable-button"
+                        aria-label="Кнопка Войти"
+                    >
+                        Войти
+                    </button>
+                </div>
             </form>
             <div className="login__signin">
                 <p className="login__signin-link">Ещё не зарегистрированы? </p>

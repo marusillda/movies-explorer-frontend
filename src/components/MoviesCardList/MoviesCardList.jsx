@@ -1,7 +1,6 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-
 export default function MoviesCardList({ movies, showAddToSavedButton }) {
     return (
         <ul className="moviescardlist">

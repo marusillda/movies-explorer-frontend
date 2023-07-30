@@ -10,39 +10,40 @@ import {
     SEARCH_SHORT_MOVIES_NOT_FOUND_MESSAGE,
 } from '../../utils/constants';
 
-
 export default function SavedMovies() {
     const { savedMovies } = useContext(SavedMoviesContext);
-    const { searchResults, shortMoviesOnly, setSearchResults, setMovies, setSearchText, setShortMoviesOnly } = useMovieSearch();
-    const [userSearch, setUserSearch] = useState({
-        searchText: '',
-        shortMoviesOnly: false
-    });
+    const { searchResults, shortMoviesOnly, setMovies, setSearchText, setShortMoviesOnly } = useMovieSearch();
     const emptySearchResults = useMemo(() => searchResults.length === 0, [searchResults]);
+    const emptySavedMovies = useMemo(() => savedMovies.length === 0, [savedMovies]);
     const [userMessage, setUserMessage] = useState(FIRST_TIP_SAVED_MOVIES_MESSSAGE);
-
 
     useEffect(() => {
         setMovies(savedMovies);
-        setSearchResults(savedMovies);
         // eslint-disable-next-line
     }, [savedMovies])
 
     useEffect(() => {
-        emptySearchResults &&
-            (shortMoviesOnly ? setUserMessage(SEARCH_SHORT_MOVIES_NOT_FOUND_MESSAGE) : setUserMessage(SEARCH_NOT_FOUND_MESSAGE));
-        // eslint-disable-next-line
-    }, [searchResults])
+        if (emptySavedMovies) {
+            setUserMessage(FIRST_TIP_SAVED_MOVIES_MESSSAGE);
+            return;
+        }
+        if (emptySearchResults) {
+            if (shortMoviesOnly) {
+                setUserMessage(SEARCH_SHORT_MOVIES_NOT_FOUND_MESSAGE);
+            } else {
+                setUserMessage(SEARCH_NOT_FOUND_MESSAGE);
+            }
+        }
+    }, [emptySearchResults, emptySavedMovies, shortMoviesOnly])
 
     const onSearchClicked = (searchText, shortMoviesOnly) => {
         setSearchText(searchText);
         setShortMoviesOnly(shortMoviesOnly);
-        setUserSearch({ searchText, shortMoviesOnly });
     }
 
     return (
         <section className="savedmovies" aria-label="Сохраненные фильмы">
-            <SearchForm onSearchClicked={onSearchClicked} savedSearch={userSearch} />
+            <SearchForm onSearchClicked={onSearchClicked} />
             {emptySearchResults
                 ?
                 <span className="savedmovies-message">{userMessage}</span>

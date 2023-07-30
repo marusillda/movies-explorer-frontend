@@ -1,8 +1,7 @@
 import './Header.css';
 import Logo from '../Logo/Logo';
 import { NavLink, useLocation } from 'react-router-dom';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import BurgerButton from '../BurgerButton/BurgerButton';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
@@ -11,11 +10,9 @@ export default function Header({ isLoggedIn }) {
     const isMainPage = pathname === '/';
     const headerLineClass = isMainPage ? 'header__line header__line_path_main' : 'header__line';
     const [isMenuClicked, setIsMenuClicked] = useState(false);
-
     const handleNavbarClick = () => {
         setIsMenuClicked(!isMenuClicked);
     }
-
 
     return (
         <header className="header">

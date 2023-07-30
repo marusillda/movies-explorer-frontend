@@ -77,11 +77,18 @@
     padding-top: 3px;
 }
 
+.register__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 93px 0 2px 0;
+}
+
 .register__submit-button {
     color: rgba(255, 255, 255, 1);
-    margin: 127px 0 2px 0;
+    margin: 0;
     border: none;
-    max-width: 396px;
+    width: 100%;
     border-radius: 3px;
     background: rgba(66, 133, 244, 1);
     text-align: center;
@@ -131,6 +138,17 @@
     line-height: normal;
 }
 
+.register__error-message {
+    display: block;
+    min-height: 14px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: normal;
+    color: rgba(238, 52, 101, 1);
+    padding-bottom: 20px;
+}
+
 @media screen and (max-width: 870px) {
     .register {
         margin: 232px auto;
@@ -153,8 +171,11 @@
     }
 
     .register__submit-button {
-        margin: 215px 0 0 0;
         font-size: 12px;
+    }
+
+    .register__buttons {
+        margin: 181px 0 0 0;
     }
 
     .register__signin-link {
