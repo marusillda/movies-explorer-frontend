@@ -96,6 +96,7 @@
     .searchform__field-movie {
         padding-left: 11px;
         width: calc(100% - 12px);
+        min-height: 50px;
     }
 
     .searchform__submit-button {
