@@ -10,6 +10,12 @@ import {
     SEARCH_ERROR_MESSAGE,
     SEARCH_NOT_FOUND_MESSAGE,
     SEARCH_SHORT_MOVIES_NOT_FOUND_MESSAGE,
+    MOBILE_PAGE_SIZE,
+    TABLET_PAGE_SIZE,
+    DESKTOP_PAGE_SIZE,
+    MOBILE_INCREMENT,
+    TABLET_INCREMENT,
+    DESKTOP_INCREMENT
 } from '../../utils/constants';
 import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 import Preloader from '../Preloader/Preloader';
@@ -49,8 +55,8 @@ export default function Movies({ loadMovies }) {
     }, []);
 
     const pageSize = useMemo(() => {
-        const baseSize = isMobile ? 5 : isTablet ? 8 : 12;
-        const increment = isMobile ? 2 : isTablet ? 2 : 3;
+        const baseSize = isMobile ? MOBILE_PAGE_SIZE : isTablet ? TABLET_PAGE_SIZE : DESKTOP_PAGE_SIZE;
+        const increment = isMobile ? MOBILE_INCREMENT : isTablet ? TABLET_INCREMENT : DESKTOP_INCREMENT;
 
         return baseSize + showMoreClickedCounter * increment;
     }, [isMobile, isTablet, showMoreClickedCounter]);

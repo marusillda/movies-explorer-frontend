@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { SHORT_MOVIE_MAX_DURATION } from '../utils/constants';
 
 export function useMovieSearch() {
     const [movies, setMovies] = useState([]);
@@ -22,7 +23,7 @@ export function useMovieSearch() {
             return;
         }
         const filterBySearchText = movie => !searchText || searchMatches(movie.nameRU, searchText) || searchMatches(movie.nameEN, searchText);
-        const filterByShowMoviesOnly = movie => !shortMoviesOnly || movie.duration <= 40;
+        const filterByShowMoviesOnly = movie => !shortMoviesOnly || movie.duration <= SHORT_MOVIE_MAX_DURATION;
         const filteredMovies = movies
             .filter(filterBySearchText)
             .filter(filterByShowMoviesOnly);

@@ -12,15 +12,18 @@ import {
 export default function Register({ registerUser }) {
     const { values, handleChange, errors, isValid } = useFormAndValidation()
     const [registerMessage, setRegisterMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         registerUser(values)
             .catch((error) => {
                 error.code === HTTP_CONFLICT
                     ? setRegisterMessage(USER_EMAIL_EXISTS_MESSAGE)
                     : setRegisterMessage(REGISTER_ERROR_MESSAGE);
             })
+            .finally(() => { setIsLoading(false) });
     }
 
     return (
@@ -42,6 +45,7 @@ export default function Register({ registerUser }) {
                         maxLength="30"
                         placeholder="Введите имя"
                         required
+                        disabled={isLoading}
                     />
                     <span className="register__field-error-message">
                         {errors.name}
@@ -59,6 +63,7 @@ export default function Register({ registerUser }) {
                         autoComplete="username"
                         placeholder="Введите E-mail"
                         required
+                        disabled={isLoading}
                     />
                     <span className="register__field-error-message">
                         {errors.email}
@@ -78,6 +83,7 @@ export default function Register({ registerUser }) {
                         autoComplete="current-password"
                         placeholder="Введите пароль"
                         required
+                        disabled={isLoading}
                     />
                     <span className="register__field-error-message">
                         {errors.password}
@@ -88,12 +94,12 @@ export default function Register({ registerUser }) {
                         {registerMessage}
                     </span>
                     <button
-                        disabled={!isValid}
+                        disabled={!isValid || isLoading}
                         type="submit"
                         className="register__submit-button selectable-button"
                         aria-label="Кнопка Зарегистрироваться"
                     >
-                        Зарегистрироваться
+                        {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
                     </button>
                 </div>
             </form>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { TABLET_WIDTH, DESKTOP_WIDTH } from '../utils/constants';
 
 export function useScreenResize() {
     const [isMobile, setIsMobile] = useState(false);
@@ -6,8 +7,8 @@ export function useScreenResize() {
     const [timeoutId, setTimeoutId] = useState(0);
 
     const setScreenSize = () => {
-        setIsMobile(window.innerWidth < 760);
-        setIsTablet(window.innerWidth >= 760 && window.innerWidth < 1280);
+        setIsMobile(window.innerWidth < TABLET_WIDTH);
+        setIsTablet(window.innerWidth >= TABLET_WIDTH && window.innerWidth < DESKTOP_WIDTH);
     }
 
     useEffect(() => {

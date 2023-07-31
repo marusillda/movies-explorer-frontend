@@ -18,6 +18,7 @@ export default function Profile({ signOut, onUpdateUser }) {
     const [isProfileChanged, setIsProfileChanged] = useState(false);
     const [isMessageShow, setIsMessageShow] = useState(false);
     const [profileMessage, setProfileMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const isProfileChanged = currentUser?.name !== values.name || currentUser?.email !== values.email;
@@ -27,6 +28,7 @@ export default function Profile({ signOut, onUpdateUser }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         setIsMessageShow(true);
         onUpdateUser({
             name: values.name,
@@ -37,7 +39,8 @@ export default function Profile({ signOut, onUpdateUser }) {
                 error.code === HTTP_CONFLICT
                     ? setProfileMessage(USER_EMAIL_EXISTS_MESSAGE)
                     : setProfileMessage(PROFILE_UPDATE_ERROR_MESSAGE);
-            });
+            })
+            .finally(() => { setIsLoading(false) });
     };
 
     useEffect(() => {
@@ -67,7 +70,7 @@ export default function Profile({ signOut, onUpdateUser }) {
                             maxLength="30"
                             required
                             placeholder="Введите имя"
-                            disabled={!isEditMode}
+                            disabled={!isEditMode || isLoading}
                         />
                     </div>
                     <span className="profile__field-error-message">
@@ -86,7 +89,7 @@ export default function Profile({ signOut, onUpdateUser }) {
                             onChange={handleChange}
                             required
                             placeholder="Введите email"
-                            disabled={!isEditMode}
+                            disabled={!isEditMode || isLoading}
                         />
                     </div>
                     <span className="profile__field-error-message">
@@ -100,12 +103,13 @@ export default function Profile({ signOut, onUpdateUser }) {
                             {isMessageShow && profileMessage}
                         </span>
                         <button
-                            disabled={!isValid || !isProfileChanged}
+                            disabled={!isValid || !isProfileChanged || isLoading}
                             type="submit"
                             className="profile__submit-button selectable-button"
                             aria-label="Кнопка Сохранить"
                         >
-                            Сохранить
+                            {isLoading ? 'Сохранение...' : 'Сохранить'}
+
                         </button>
                     </div>
                     )

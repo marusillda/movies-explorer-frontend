@@ -11,15 +11,18 @@ import {
 export default function Login({ loginUser }) {
     const { values, handleChange, errors, isValid } = useFormAndValidation();
     const [loginMessage, setLoginMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         loginUser(values)
             .catch((error) => {
                 error.code === HTTP_UNAUTHORIZED
                     ? setLoginMessage(USER_ERROR_LOGIN_MESSAGE)
                     : setLoginMessage(error.message);
             })
+            .finally(() => { setIsLoading(false) });
     };
 
     return (
@@ -39,6 +42,7 @@ export default function Login({ loginUser }) {
                         autoComplete="username"
                         required
                         placeholder="Введите E-mail"
+                        disabled={isLoading}
                     />
                     <span className="login__field-error-message">
                         {errors.email}
@@ -58,6 +62,7 @@ export default function Login({ loginUser }) {
                         autoComplete="current-password"
                         placeholder="Введите пароль"
                         required
+                        disabled={isLoading}
                     />
                     <span className="login__field-error-message">
                         {errors.password}
@@ -68,11 +73,12 @@ export default function Login({ loginUser }) {
                         {loginMessage}
                     </span>
                     <button
-                        disabled={!isValid}
+                        disabled={!isValid || isLoading}
                         type="submit"
                         className="login__submit-button selectable-button"
                         aria-label="Кнопка Войти"
                     >
+                        {isLoading ? 'Вход...' : 'Войти'}
                         Войти
                     </button>
                 </div>

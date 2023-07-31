@@ -10,7 +10,7 @@ export const PROFILE_UPDATE_ERROR_MESSAGE = 'При обновлении про�
 export const REGISTER_ERROR_MESSAGE = 'При регистрации пользователя произошла ошибка.';
 export const USER_ERROR_LOGIN_MESSAGE = 'Вы ввели неправильный логин или пароль.';
 export const USER_WRONG_TOKEN_MESSAGE = 'При авторизации произошла ошибка. Токен не передан или передан не в том формате.';
-export const SERVER_ERROR_MESSAGE = 'На сервере произошла ошибка.';
+export const SERVER_ERROR_MESSAGE = 'На сервере произошла ошибка.'
 
 export const { REACT_APP_BASE_URL: baseUrl = 'http://localhost:3100' } = process.env;
 export const { REACT_APP_BASE_MOVIES_URL: moviesBaseUrl = 'https://api.nomoreparties.co' } = process.env;
@@ -19,3 +19,15 @@ export const HTTP_CONFLICT = 409;
 export const HTTP_UNAUTHORIZED = 401;
 export const HTTP_BAD_REQUEST = 400;
 export const HTTP_SERVER_ERROR = 500;
+
+export const MOBILE_PAGE_SIZE = 5;
+export const TABLET_PAGE_SIZE = 8;
+export const DESKTOP_PAGE_SIZE = 12;
+export const MOBILE_INCREMENT = 2;
+export const TABLET_INCREMENT = 2;
+export const DESKTOP_INCREMENT = 3;
+
+export const SHORT_MOVIE_MAX_DURATION = 40;
+
+export const TABLET_WIDTH = 760;
+export const DESKTOP_WIDTH = 1280;

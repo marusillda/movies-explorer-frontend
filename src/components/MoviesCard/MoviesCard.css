@@ -138,6 +138,10 @@
         height: 168px;
     }
 
+    .moviescard__delete-button {
+        background: center / contain no-repeat url(../../images/movies-close-button.svg);
+    }
+
     .moviescard__info-name {
         font-size: 12px;
     }

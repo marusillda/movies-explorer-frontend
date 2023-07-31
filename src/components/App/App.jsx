@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 import Main from '../Main/Main';
@@ -187,8 +187,8 @@ function App() {
               } />
             </Route>
             <Route path="/" element={<LayOut showFooter={false} showHeader={false} />}>
-              <Route path="signup" element={<Register registerUser={registerUser} />} />
-              <Route path="signin" element={<Login loginUser={loginUser} />} />
+              <Route path="signup" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Register registerUser={registerUser} />} />
+              <Route path="signin" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Login loginUser={loginUser} />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
