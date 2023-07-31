@@ -79,7 +79,6 @@ export default function Login({ loginUser }) {
                         aria-label="Кнопка Войти"
                     >
                         {isLoading ? 'Вход...' : 'Войти'}
-                        Войти
                     </button>
                 </div>
             </form>

@@ -109,7 +109,6 @@ export default function Profile({ signOut, onUpdateUser }) {
                             aria-label="Кнопка Сохранить"
                         >
                             {isLoading ? 'Сохранение...' : 'Сохранить'}
-
                         </button>
                     </div>
                     )
