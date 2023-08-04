@@ -3,28 +3,58 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import {
+    HTTP_CONFLICT,
+    PROFILE_SUCCESS_UPDATE_MESSAGE,
+    USER_EMAIL_EXISTS_MESSAGE,
+    PROFILE_UPDATE_ERROR_MESSAGE
+} from '../../utils/constants';
 
-export default function Profile({ changeUser }) {
-    const { values, handleChange, errors, isValid } = useFormAndValidation();
+export default function Profile({ signOut, onUpdateUser }) {
+    const { values, handleChange, errors, isValid, setValues } = useFormAndValidation();
 
     const currentUser = useContext(CurrentUserContext);
-
     const [isEditMode, setIsEditMode] = useState(false);
     const [isProfileChanged, setIsProfileChanged] = useState(false);
-
+    const [isMessageShow, setIsMessageShow] = useState(false);
+    const [profileMessage, setProfileMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsProfileChanged(currentUser?.name !== values.name || currentUser?.email !== values.email);
+        const isProfileChanged = currentUser?.name !== values.name || currentUser?.email !== values.email;
+        setIsProfileChanged(isProfileChanged);
+        setIsMessageShow(!isProfileChanged);
     }, [values, currentUser])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        changeUser(values);
+        setIsLoading(true);
+        setIsMessageShow(true);
+        onUpdateUser({
+            name: values.name,
+            email: values.email,
+        })
+            .then(() => { setProfileMessage(PROFILE_SUCCESS_UPDATE_MESSAGE); })
+            .catch(error => {
+                error.code === HTTP_CONFLICT
+                    ? setProfileMessage(USER_EMAIL_EXISTS_MESSAGE)
+                    : setProfileMessage(PROFILE_UPDATE_ERROR_MESSAGE);
+            })
+            .finally(() => { setIsLoading(false) });
     };
+
+    useEffect(() => {
+        setValues({
+            name: currentUser.name || '',
+            email: currentUser.email || '',
+        })
+        // eslint-disable-next-line
+    }, [currentUser]);
+
 
     return (
         <section className="profile" aria-label="Редактирование профиля пользователя">
-            <h1 className="profile__title">Привет, Виталий{currentUser?.name}!</h1>
+            <h1 className="profile__title">Привет, {currentUser?.name}!</h1>
             <form className="profile__form" onSubmit={handleSubmit}>
                 <div className="profile__form-container">
                     <div className="profile__field-container">
@@ -40,7 +70,7 @@ export default function Profile({ changeUser }) {
                             maxLength="30"
                             required
                             placeholder="Введите имя"
-                            disabled={!isEditMode}
+                            disabled={!isEditMode || isLoading}
                         />
                     </div>
                     <span className="profile__field-error-message">
@@ -59,44 +89,46 @@ export default function Profile({ changeUser }) {
                             onChange={handleChange}
                             required
                             placeholder="Введите email"
-                            disabled={!isEditMode}
+                            disabled={!isEditMode || isLoading}
                         />
                     </div>
                     <span className="profile__field-error-message">
                         {errors.email}
                     </span>
                 </div>
-                <div className="profile__buttons">
-                    {isEditMode
-                        ?
-                        (
+                {isEditMode
+                    ?
+                    (<div className="profile__buttons">
+                        <span className='profile__error-message'>
+                            {isMessageShow && profileMessage}
+                        </span>
+                        <button
+                            disabled={!isValid || !isProfileChanged || isLoading}
+                            type="submit"
+                            className="profile__submit-button selectable-button"
+                            aria-label="Кнопка Сохранить"
+                        >
+                            {isLoading ? 'Сохранение...' : 'Сохранить'}
+                        </button>
+                    </div>
+                    )
+                    :
+                    (
+                        <div className="profile__buttons">
                             <button
-                                disabled={!isValid || !isProfileChanged}
-                                type="submit"
-                                className="profile__submit-button selectable-button"
-                                aria-label="Кнопка Сохранить"
+                                type="button"
+                                className="profile__button selectable-link"
+                                aria-label="Кнопка редактирования"
+                                onClick={() => setIsEditMode(true)}
                             >
-                                Сохранить
+                                Редактировать
                             </button>
-                        )
-                        :
-                        (
-                            <>
-                                <button
-                                    type="button"
-                                    className="profile__button selectable-link"
-                                    aria-label="Кнопка редактирования"
-                                    onClick={() => setIsEditMode(true)}
-                                >
-                                    Редактировать
-                                </button>
-                                <Link className="profile__button profile__button_type_exit selectable-link" to="/">
-                                    Выйти из аккаунта
-                                </Link>
-                            </>
-                        )
-                    }
-                </div>
+                            <Link className="profile__button profile__button_type_exit selectable-link" to="/" onClick={signOut}>
+                                Выйти из аккаунта
+                            </Link>
+                        </div>
+                    )
+                }
             </form>
         </section>
     )

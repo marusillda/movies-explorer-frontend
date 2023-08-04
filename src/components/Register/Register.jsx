@@ -1,15 +1,30 @@
 import './Register.css';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../Logo/Logo';
+import {
+    HTTP_CONFLICT,
+    USER_EMAIL_EXISTS_MESSAGE,
+    REGISTER_ERROR_MESSAGE
+} from '../../utils/constants';
 
 export default function Register({ registerUser }) {
     const { values, handleChange, errors, isValid } = useFormAndValidation()
+    const [registerMessage, setRegisterMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        registerUser(values);
-    };
+        setIsLoading(true);
+        registerUser(values)
+            .catch((error) => {
+                error.code === HTTP_CONFLICT
+                    ? setRegisterMessage(USER_EMAIL_EXISTS_MESSAGE)
+                    : setRegisterMessage(REGISTER_ERROR_MESSAGE);
+            })
+            .finally(() => { setIsLoading(false) });
+    }
 
     return (
         <section className="register" aria-label="Регистрация на сайте">
@@ -30,6 +45,7 @@ export default function Register({ registerUser }) {
                         maxLength="30"
                         placeholder="Введите имя"
                         required
+                        disabled={isLoading}
                     />
                     <span className="register__field-error-message">
                         {errors.name}
@@ -47,6 +63,7 @@ export default function Register({ registerUser }) {
                         autoComplete="username"
                         placeholder="Введите E-mail"
                         required
+                        disabled={isLoading}
                     />
                     <span className="register__field-error-message">
                         {errors.email}
@@ -66,19 +83,25 @@ export default function Register({ registerUser }) {
                         autoComplete="current-password"
                         placeholder="Введите пароль"
                         required
+                        disabled={isLoading}
                     />
                     <span className="register__field-error-message">
                         {errors.password}
                     </span>
                 </div>
-                <button
-                    disabled={!isValid}
-                    type="submit"
-                    className="register__submit-button selectable-button"
-                    aria-label="Кнопка Зарегистрироваться"
-                >
-                    Зарегистрироваться
-                </button>
+                <div className="register__buttons">
+                    <span className="register__error-message">
+                        {registerMessage}
+                    </span>
+                    <button
+                        disabled={!isValid || isLoading}
+                        type="submit"
+                        className="register__submit-button selectable-button"
+                        aria-label="Кнопка Зарегистрироваться"
+                    >
+                        {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
+                    </button>
+                </div>
             </form>
             <div className="register__signin">
                 <p className="register__signin-link">Уже зарегистрированы? </p>

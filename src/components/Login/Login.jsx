@@ -1,14 +1,28 @@
 import './Login.css';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../Logo/Logo';
+import {
+    HTTP_UNAUTHORIZED,
+    USER_ERROR_LOGIN_MESSAGE
+} from '../../utils/constants';
 
 export default function Login({ loginUser }) {
-    const { values, handleChange, errors, isValid } = useFormAndValidation()
+    const { values, handleChange, errors, isValid } = useFormAndValidation();
+    const [loginMessage, setLoginMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        loginUser(values);
+        setIsLoading(true);
+        loginUser(values)
+            .catch((error) => {
+                error.code === HTTP_UNAUTHORIZED
+                    ? setLoginMessage(USER_ERROR_LOGIN_MESSAGE)
+                    : setLoginMessage(error.message);
+            })
+            .finally(() => { setIsLoading(false) });
     };
 
     return (
@@ -28,6 +42,7 @@ export default function Login({ loginUser }) {
                         autoComplete="username"
                         required
                         placeholder="Введите E-mail"
+                        disabled={isLoading}
                     />
                     <span className="login__field-error-message">
                         {errors.email}
@@ -47,19 +62,25 @@ export default function Login({ loginUser }) {
                         autoComplete="current-password"
                         placeholder="Введите пароль"
                         required
+                        disabled={isLoading}
                     />
                     <span className="login__field-error-message">
                         {errors.password}
                     </span>
                 </div>
-                <button
-                    disabled={!isValid}
-                    type="submit"
-                    className="login__submit-button selectable-button"
-                    aria-label="Кнопка Войти"
-                >
-                    Войти
-                </button>
+                <div className="login__buttons">
+                    <span className="login__error-message">
+                        {loginMessage}
+                    </span>
+                    <button
+                        disabled={!isValid || isLoading}
+                        type="submit"
+                        className="login__submit-button selectable-button"
+                        aria-label="Кнопка Войти"
+                    >
+                        {isLoading ? 'Вход...' : 'Войти'}
+                    </button>
+                </div>
             </form>
             <div className="login__signin">
                 <p className="login__signin-link">Ещё не зарегистрированы? </p>

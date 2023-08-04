@@ -1,18 +1,17 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { useScreenResize } from '../../hooks/useScreenResize';
 
-export default function MoviesCardList({ movies }) {
-    const { isMobile, isTablet } = useScreenResize();
-
-    const moviesCount = isMobile ? 5 : isTablet ? 8 : 12;
+export default function MoviesCardList({ movies, showAddToSavedButton }) {
     return (
         <ul className="moviescardlist">
-            {movies.slice(0, moviesCount).map(movie => (
-                <MoviesCard
-                    key={movie._id}
-                    movie={movie} />
-            ))
+            {
+                movies.map(movie => (
+                    <MoviesCard
+                        key={movie.movieId || movie.id}
+                        movie={movie}
+                        showAddToSavedButton={showAddToSavedButton}
+                    />
+                ))
             }
         </ul>
     )

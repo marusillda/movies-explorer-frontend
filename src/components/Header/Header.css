@@ -125,7 +125,7 @@
 
     .header__navbar-profile-button {
         margin-left: 0px;
-        margin-top: 621px;
+        margin-top: calc(100vh - 403px);
     }
 
     .header__navbar-link_type_active {
@@ -165,7 +165,7 @@
     }
 
     .header__navbar-profile-button {
-        margin-top: 444px;
+        margin-top: calc(100vh - 337px);
     }
 
     .header__navbar_buregermenu {

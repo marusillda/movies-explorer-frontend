@@ -3,7 +3,6 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 import aboutmeAvatar from '../../../images/aboutme-avatar.png';
 
 export default function AboutMe() {
-
     return (
         <section className="aboutme" aria-label="Обо мне">
             <SectionTitle title="Студент" />

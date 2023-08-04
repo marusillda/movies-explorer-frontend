@@ -7,6 +7,5 @@ export default function Logo({ position }) {
         <Link to="/">
             <img className={`logo selectable-button ${position}`} src={logo} alt="Логотип сайта" />
         </Link>
-
     )
 }
