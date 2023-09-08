@@ -32,4 +32,4 @@
 
 ## Ссылки на проект
 * Код бэкенд части проекта можно посмотреть по [ссылке](https://github.com/marusillda/movies-explorer-api)
-* * Код фронтенд части проекта можно посмотреть по [ссылке](https://github.com/marusillda/movies-explorer-frontend)
+* Код фронтенд части проекта можно посмотреть по [ссылке](https://github.com/marusillda/movies-explorer-frontend)
