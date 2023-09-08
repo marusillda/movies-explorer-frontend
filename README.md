@@ -1,5 +1,37 @@
-Ссылка на макет FIGMA: https://www.figma.com/file/hn1pQpc0NGAe2szIcpc7oD/Diploma-(Copy)?type=design&t=KeiBzSJZRLKiOhKS-6
-СКАЧАТЬ МАКЕТ С ЯНДЕКС ДИСК: https://disk.yandex.ru/d/rCWxnXTRqKTiTg
+# Проект: Путешествия по России
 
-Ссылка на PULL REQUEST https://github.com/marusillda/movies-explorer-frontend/pull/2
-Ссылка на сайт: https://movies.marusillda.nomoreparties.sbs
+## [Демонстрация сайта](https://movies.marusillda.nomoreparties.sbs)
+
+![Превью проекта]()
+
+#  Дипломный проект. Курс ЯПрактикум "Веб-разработчик" (frontend)
+
+Проект представляет собой сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинете.
+
+Макет в Figma по [ссылке:](https://disk.yandex.ru/d/rCWxnXTRqKTiTg)
+
+**Выполнена фронтенд часть проекта, в которой реализованы:** 
+* вёрстка компонентов на React;
+* логика и вёрстка главной страницы, страниц регистрации, авторизации, редактирования профиля, фильмов, сохранённых фильмов;
+* асинхронные GET- POST- PATCH- и DELETE-запросы к API;
+* фильтрация данных на стороне клиента;
+* авторизованные и неавторизованные состояния;
+* поиск фильмов и сохранение в профиле;
+
+**Использованы следующие методы и технологии:**
+  * HTML
+  * CSS
+  * React
+  * Express
+  * MongoDB
+  * NodeJS
+  * API
+  * Nginx
+  * JWT
+  * Postman
+  * PerfectPixel
+  * Figma
+
+## Ссылки на проект
+Код бэкенд части проекта можно посмотреть по [ссылке](https://github.com/marusillda/movies-explorer-api)
+Код фронтенд части проекта можно посмотреть по [ссылке](https://github.com/marusillda/movies-explorer-frontend)
